@@ -35,7 +35,7 @@ function sq(){
 function test(){
 	
 	var elem = document.getElementById('test');
-	menu(elem);
+	//menu(elem);
 	
 	var params = {width:600, height: 500, autostart: true };
 	two = new Two(params).appendTo(elem);
@@ -212,7 +212,7 @@ function getRandomColor() {
           }
 		  
 		  
-		  
+/*		  
 function menu(elem){
 	if (elem.addEventListener) {
         elem.addEventListener('contextmenu', function(e) {
@@ -269,4 +269,4 @@ function mouseY(evt) {
     } else {
         return null;
     }
-}
+}*/
