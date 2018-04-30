@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+    <meta charset="utf-8">
+	
+	<link rel="stylesheet" href="bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="jquery/jquery-ui.css">
+	<link rel="stylesheet" href="contmenu.css">
+	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+	
+	<script src="jquery/external/jquery/jquery-3.3.1.min.js"></script>
+	<script src="jquery/external/jquery/jquery.js"></script>
+	<script src="jquery/jquery-ui.js"></script>
+
+	<script src="bootstrap/bootstrap.js"></script>
+
+	<script src="https://two.js.org/third-party/url.js"></script>  
+
+    <script src="https://two.js.org/third-party/two.js"></script>
+
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+
+	<script src="./script/script.js"> </script>
+</head>
+<body>
+  <div class="py-5">
+    <div id ="main" class="container">
+      <div id ="lista" class="row">
+		<div class="col-md-3"></div>
+        <div id="test" class="col-md-6" onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<div class="col-md-3" >
+			<div class=" ui-tabs ui-corner-all ui-widget ui-widget-content" id="tabs">
+			  
+			  <ul class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header" role ="tablist">
+				<li tabindex="0" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active" role="tab" aria-expanded="true" aria-selected="true" aria-controls="fragment-1" aria-labelledby="ui-id-1">
+					<a tabindex="-1" class="ui-tabs-anchor" id="ui-id-1" role="presentation" href="#fragment-1" >TAVOLO</a>
+				</li>
+				<li tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" role="tab" aria-expanded="false" aria-selected="false" aria-controls="fragment-2" aria-labelledby="ui-id-2">
+					<a tabindex="-1" class="ui-tabs-anchor" id="ui-id-2" role="presentation" href="#fragment-2" ><span>Two</span></a>
+				</li>
+			  </ul>
+			  
+			  
+			  
+			  
+			  <div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="fragment-1" role="tabpanel" aria-hidden="false" aria-labelledby="ui-id-1" style="display: block;">
+				   <ul>
+					<li ><a onclick="stat(1)">Free coursor</a></li>
+					<li ><a onclick="stat(2)">Table </a> <div id="square" draggable="true"></div> </li>
+					<li ><a onclick="stat(3)">Blocked area</a></li>
+				  </ul>
+			  </div>
+			  <div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="fragment-2" role="tabpanel" aria-hidden="true" aria-labelledby="ui-id-2" style="display: none;">
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+			  </div>
+			</div>
+			
+      </div>
+    </div>
+  </div>
+			<div class="hide" id="rmenu">
+            <ul>
+                <li>
+                    <a href="http://www.google.com">Google</a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8080/login">Localhost</a>
+                </li>
+
+                <li>
+                    <a href="C:\">C</a>
+                </li>
+            </ul>
+        </div>
+
+  
+  
+  
+  
+  
+  </div>
+  
+  
+	<script>
+
+
+    if ($("#test").addEventListener) {
+        $("#test").addEventListener('contextmenu', function(e) {
+            alert("You've tried to open context menu"); //here you draw your own menu
+            e.preventDefault();
+        }, false);
+	 $("#test").bind("click", function(event) {
+        document.getElementById("rmenu").className = "hide";
+    });
+	}
+	
+		console.log($( "#tabs" ));
+		$( "#tabs" ).tabs();
+	</script>
+	<script>
+		main();
+		//test();
+		//sq();
+	</script>
+
+
+
+</body>
+
+</html>
