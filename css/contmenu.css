@@ -1,8 +1,8 @@
 .show {
     z-index:1000;
     position: absolute;
-    background-color:#C0C0C0;
-    border: 1px solid blue;
+    background-color: #DCDCDC;
+    border: 1px solid grey;
     padding: 2px;
     display: block;
     margin: 0;
