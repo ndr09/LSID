@@ -3,7 +3,7 @@ var list = [];
 var block = [];
 var Long = [];
 var id;
-var frm;
+var frm = "block";
 var dragType;
 var two;
 var group;
@@ -18,7 +18,7 @@ const BROWN = "rgb(153,76,0)";
 
 function stat(type){
 	status = type;
-	//console.log(status);
+	console.log(status);
 	
 }
 function main(){
@@ -40,6 +40,7 @@ function sq(){
 	t.update();
 	$(rect._renderer.elem)
 					.click(function(e) {
+						console.log("status ", status);
 						status=2;
 					});
 }
@@ -57,6 +58,7 @@ function Lsq(){
 	$(rect._renderer.elem)
 					.click(function(e) {
 						status=4;
+						console.log("status ", status);
 					});
 }
 function test(){
@@ -92,20 +94,43 @@ function test(){
 	for(var j = 1; j<COL; j++){
 		for(var i = 1; i<ROW;i++){
 			var re = list[j][i];
-			//console.log($(re._renderer.elem));
+			console.log($(re._renderer.elem));
 			$(re._renderer.elem)
 					.click(function(e) {
-						//console.log(e["currentTarget"]["id"]);
+						console.log("tet ",e.button,"  ", e.which);
+						console.log(e["currentTarget"]["id"]);
+						if(e.button == 0){
 							var str = e["currentTarget"]["id"];
 							var posX = fromIDtoPosX(str);
 							var posY = fromIDtoPosY(str);
-							switch(status) {
+							status = status*1;
+							console.log("pre switch ",status);
+							if(status == 1){
+								if(list[posY][posX].fill == BROWN){
+										list[posY][posX].fill = WHYTE;
+									}
+							};
+							if(status == 2){
+								console.log("Y ",posY," X ",posX);
+								list[posY][posX].fill = BROWN;
+							}
+							if(status == 4){
+								var rect = LongTable(posX,posY);
+								Long[Long.length] = rect;
+								two.update();
+								//console.log(rect);
+								LongTableProprieties(rect);
+								
+							}
+						}
+							/*switch(status) {
 								case 1:
 									if(list[posY][posX].fill == BROWN){
 										list[posY][posX].fill = WHYTE;
 									}
 									break;
 								case 2:
+									console.log("Y ",posY," X ",posX);
 									list[posY][posX].fill = BROWN;
 									break;
 								case 4:
@@ -116,8 +141,8 @@ function test(){
 									LongTableProprieties(rect);
 									break;
 								default:
-									console.log("not a click ",status);
-							}
+									console.log("not a click",(status==4));*/
+						
 						
 					});
 		}
@@ -161,29 +186,33 @@ function fromIDtoPosX(str){
 }
 
 function allowDrop(ev) {
-	//console.log(ev);
+	console.log(ev);
     ev.preventDefault();
 }
 
 function dragST(ev) {
-	//console.log(ev);
+	ev.dataTransfer.setData('text/plain', 'anything');
+
+	console.log("ev ",ev);
 	//id = ev.target.id
 
 	dragType= "short";
 }
 function dragLT(ev) {
-	//console.log(ev);
+	ev.dataTransfer.setData('text/plain', 'anything');
+
+	console.log("ev ",ev);
 	//id = ev.target.id
-    //ev.dataTransfer.setData("text", "long");
+    //ev.dataTransfer.setData('text/plain', 'anything');
 	dragType= "long";
 }
 function drop(ev) {
-	
+	console.log("dsdasdsada");
     ev.preventDefault();
 	
 	var str = ev.target.id;
 	if(str != "two_1"){
-		//console.log("target",ev.target.id);
+		console.log("target",ev.target.id);
 		var posX = fromIDtoPosX(str);
 		var posY = fromIDtoPosY(str);
 		//console.log(str);
@@ -216,7 +245,6 @@ function LongTable(posX,posY){
 	return rect;
 }
 function RemoveLongTable(target){
-	
 	for(var i = 0; i<Long.length; i++){
 		if(Long[i].id == target["currentTarget"]["id"] ){
 			//console.log("try  " +Long[i].id);
@@ -226,12 +254,15 @@ function RemoveLongTable(target){
 	}
 }
 function MouseDown(ev){
-	//console.log("from",ev.target.id);
+	console.log("from",ev.target.id);
 	frm = ev.target.id;
+	if(frm == "two_1"){
+		frm = "block";
+	}
 }
 function MouseUp(ev){
 	var id = frm.substring(0,5);
-	if(id != "block" && status == 3){
+	if(id != "block" && status == 3 && ev.button == 0){
 	//console.log("to",ev.target.id);	
 	var to=ev.target.id;
 	var Xfrom = fromIDtoPosX(frm);
@@ -241,8 +272,8 @@ function MouseUp(ev){
 	var Yto = fromIDtoPosY(to);
 	
 	var rect = CreateBlock(Xfrom,Yfrom,Xto,Yto);
-	//console.log(Yfrom,"   ", Xfrom);
-	//console.log(Yto,"   ", Xto);
+	console.log("from ",Yfrom,"   ", Xfrom);
+	console.log("to ",Yto,"   ", Xto);
 	
 	block[block.length] = rect;
 	
@@ -313,9 +344,11 @@ function getRandomColor() {
 function menu(elem){
 	if (elem._renderer.elem.addEventListener) {
         elem._renderer.elem.addEventListener('contextmenu', function(e) {
+			console.log("tet ",e.button,"  ", e.which);
+			//console.log(document.getElementById("rmenu"));
             document.getElementById("rmenu").className = "show";  
-            document.getElementById("rmenu").style.top =  mouseY(event) + 'px';
-            document.getElementById("rmenu").style.left = mouseX(event) + 'px';
+            document.getElementById("rmenu").style.top =  mouseY(e) + 'px';
+            document.getElementById("rmenu").style.left = mouseX(e) + 'px';
 			
 			RightID = e["currentTarget"]["id"];
 			target = e["currentTarget"];
@@ -324,9 +357,9 @@ function menu(elem){
         }, false);
     } else {
 
-        //document.getElementById("test").attachEvent('oncontextmenu', function() {
+        document.getElementById("test").attachEvent('oncontextmenu', function() {
         //$(".test").bind('contextmenu', function() {
-            elem.on('contextmenu', 'a.test', function() {
+           // elem.on('contextmenu', 'a.test', function() {
 
 
             //alert("contextmenu"+event);
@@ -335,7 +368,7 @@ function menu(elem){
             document.getElementById("rmenu").style.left = mouseX(event) + 'px';
 
             window.event.returnValue = false;
-
+		//}}
 
         });
     }
