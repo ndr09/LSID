@@ -189,17 +189,16 @@ function allowDrop(ev) {
 	console.log(ev);
     ev.preventDefault();
 }
-
-function dragST(ev) {
+function dragStart(ev) {
 	ev.dataTransfer.setData('text/plain', 'anything');
-
+}
+function dragST(ev) {
 	console.log("ev ",ev);
 	//id = ev.target.id
 
 	dragType= "short";
 }
 function dragLT(ev) {
-	ev.dataTransfer.setData('text/plain', 'anything');
 
 	console.log("ev ",ev);
 	//id = ev.target.id
