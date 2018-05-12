@@ -18,7 +18,7 @@
 
 	<script src="https://two.js.org/third-party/url.js"></script>  
 
-    <script src="https://two.js.org/third-party/two.js"></script>
+    <script src="./script/two.js"></script>
 
 	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
@@ -28,36 +28,16 @@
   <div class="py-5">
     <div id ="main" class="container">
       <div id ="lista" class="row">
-		<div class="col-md-3"></div>
-        <div id="test" class="col-md-6" contextmenu="false" onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ></div>
 		<div class="col-md-3" >
-			<div class=" ui-tabs ui-corner-all ui-widget ui-widget-content" id="tabs">
-			  
-			  <ul class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header" role ="tablist">
-				<li tabindex="0" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active" role="tab" aria-expanded="true" aria-selected="true" aria-controls="fragment-1" aria-labelledby="ui-id-1">
-					<a tabindex="-1" class="ui-tabs-anchor" id="ui-id-1" role="presentation" href="#fragment-1" >Elements</a>
-				</li>
-				<li tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" role="tab" aria-expanded="false" aria-selected="false" aria-controls="fragment-2" aria-labelledby="ui-id-2">
-					<a tabindex="-1" class="ui-tabs-anchor" id="ui-id-2" role="presentation" href="#fragment-2" ><span>Configuration</span></a>
-				</li>
-			  </ul>
-			  
-			  
-			  
-			  
-			  <div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="fragment-1" role="tabpanel" aria-hidden="false" aria-labelledby="ui-id-1" style="display: block;">
-				   <ul>
-					<li ><a onclick="stat(1)">Delete</a></li>
-					<li ><a onclick="stat(2)">Table </a> <div id="square" ondrag="dragST(event)" draggable="true" ondragstart="dragStart(event)"></div> </li>
-					<li ><a onclick="stat(4)">Long Table </a> <div id="Lsquare" ondrag="dragLT(event)" draggable="true" ondragstart="dragStart(event)"></div> </li>
-					<li ><a onclick="stat(3)">Blocked area</a></li>
-				  </ul>
-			  </div>
-			  <div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="fragment-2" role="tabpanel" aria-hidden="true" aria-labelledby="ui-id-2" style="display: none;">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-			  </div>
-			</div>
+			<div class="list-goup">
+				<a id="TableSel" onclick="stat(2)" class="list-group-item active">Table <img height="28" width="28" class="img-responsive" src="img/small_table_1_1.png" ondrag="dragST(event)" draggable="true" ondragstart="dragStart(event)" >  </a>
+				<a id="LTableSel" onclick="stat(4)" class="list-group-item">Long Table <img height="28" width="56" class="img-responsive" src="img/small_table_2_1.png" ondrag="dragLT(event)" draggable="true" ondragstart="dragStart(event)" >  </a>
+				<a id="BlockSel" onclick="stat(3)" class="list-group-item">Blocked area</a>
+				<a id="DelSel" onclick="stat(1)" class="list-group-item">Delete</a>
+			 </div>	
+		</div>
+        <div id="test" class="col-md-6" contextmenu="false" onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
+		<div class="col-md-3" >
 			
       </div>
     </div>
@@ -74,8 +54,8 @@
             </ul>
         </div>
 
-  
-  
+	<button class="btn btn-danger" onclick="RemoveAll()">clean</button>
+	<button class="btn btn-warning" onclick="draw()">draw</button>
   
   
   
