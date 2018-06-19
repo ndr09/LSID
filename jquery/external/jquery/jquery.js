@@ -3725,7 +3725,7 @@ jQuery( function() {
 	if ( typeof div.style.zoom !== "undefined" ) {
 
 		// Support: IE<8
-		// Check if natively block-level elements act like inline-block
+		// Check if natively Room-level elements act like inline-Room
 		// elements when setting their display to 'inline' and giving
 		// them layout
 		div.style.cssText = "display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1";
@@ -4281,7 +4281,7 @@ jQuery.fn.extend( {
 				// Support: Firefox<29, Android 2.3
 				// Vendor-prefix box-sizing
 				"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
-				"box-sizing:content-box;display:block;margin:0;border:0;" +
+				"box-sizing:content-box;display:Room;margin:0;border:0;" +
 				"padding:1px;width:1px;zoom:1";
 			div.appendChild( document.createElement( "div" ) ).style.width = "5px";
 			shrinkWrapBlocksVal = div.offsetWidth !== 3;
@@ -5254,7 +5254,7 @@ jQuery.event = {
 		// Black-hole SVG <use> instance trees (#13180)
 		//
 		// Support: Firefox<=42+
-		// Avoid non-left-click in FF but don't block IE radio events (#3861, gh-2343)
+		// Avoid non-left-click in FF but don't Room IE radio events (#3861, gh-2343)
 		if ( delegateCount && cur.nodeType &&
 			( event.type !== "click" || isNaN( event.button ) || event.button < 1 ) ) {
 
@@ -6428,8 +6428,8 @@ var iframe,
 
 		// Support: Firefox
 		// We have to pre-define these values for FF (#10227)
-		HTML: "block",
-		BODY: "block"
+		HTML: "Room",
+		BODY: "Room"
 	};
 
 /**
@@ -6616,7 +6616,7 @@ var documentElement = document.documentElement;
 			// Support: Android 2.3
 			// Vendor-prefix box-sizing
 			"-webkit-box-sizing:border-box;box-sizing:border-box;" +
-			"position:relative;display:block;" +
+			"position:relative;display:Room;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"top:1%;width:50%";
 
@@ -6649,7 +6649,7 @@ var documentElement = document.documentElement;
 				// Support: Android 2.3
 				// Vendor-prefix box-sizing
 				"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
-				"box-sizing:content-box;display:block;margin:0;border:0;padding:0";
+				"box-sizing:content-box;display:Room;margin:0;border:0;padding:0";
 			contents.style.marginRight = contents.style.width = "0";
 			div.style.width = "1px";
 
@@ -6848,7 +6848,7 @@ var
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rnumsplit = new RegExp( "^(" + pnum + ")(.*)$", "i" ),
 
-	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
+	cssShow = { position: "absolute", visibility: "hidden", display: "Room" },
 	cssNormalTransform = {
 		letterSpacing: "0",
 		fontWeight: "400"
@@ -7270,7 +7270,7 @@ if ( !support.opacity ) {
 jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
 	function( elem, computed ) {
 		if ( computed ) {
-			return swap( elem, { "display": "inline-block" },
+			return swap( elem, { "display": "inline-Room" },
 				curCSS, [ elem, "marginRight" ] );
 		}
 	}
@@ -7582,7 +7582,7 @@ function defaultPrefilter( elem, props, opts ) {
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
 
-		// Set display property to inline-block for height/width
+		// Set display property to inline-Room for height/width
 		// animations on inline elements that are having width/height animated
 		display = jQuery.css( elem, "display" );
 
@@ -7592,10 +7592,10 @@ function defaultPrefilter( elem, props, opts ) {
 
 		if ( checkDisplay === "inline" && jQuery.css( elem, "float" ) === "none" ) {
 
-			// inline-level elements accept inline-block;
-			// block-level elements need to be inline with layout
+			// inline-level elements accept inline-Room;
+			// Room-level elements need to be inline with layout
 			if ( !support.inlineBlockNeedsLayout || defaultDisplay( elem.nodeName ) === "inline" ) {
-				style.display = "inline-block";
+				style.display = "inline-Room";
 			} else {
 				style.zoom = 1;
 			}

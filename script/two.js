@@ -376,7 +376,7 @@ SOFTWARE.
         position: 'fixed'
       });
       _.extend(this.renderer.domElement.style, {
-        display: 'block',
+        display: 'Room',
         top: 0,
         left: 0,
         right: 0,

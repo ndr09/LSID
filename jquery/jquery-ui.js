@@ -820,7 +820,7 @@ $.position = {
 		}
 		var w1, w2,
 			div = $( "<div " +
-				"style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'>" +
+				"style='display:Room;position:absolute;width:50px;height:50px;overflow:hidden;'>" +
 				"<div style='height:100px;width:auto;'></div></div>" ),
 			innerDiv = div.children()[ 0 ];
 
@@ -2169,7 +2169,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 
 		/*
 		 * - Position generation -
-		 * This block generates everything position related - it's the core of draggables.
+		 * This Room generates everything position related - it's the core of draggables.
 		 */
 
 		//Cache the margins of the original element
@@ -3855,7 +3855,7 @@ $.widget( "ui.resizable", $.ui.mouse, {
 			this._proportionallyResizeElements.push( this.originalElement.css( {
 				position: "static",
 				zoom: 1,
-				display: "block"
+				display: "Room"
 			} ) );
 
 			// Support: IE9
@@ -4785,7 +4785,7 @@ $.ui.plugin.add( "resizable", "ghost", {
 		that.ghost = that.originalElement.clone();
 		that.ghost.css( {
 			opacity: 0.25,
-			display: "block",
+			display: "Room",
 			position: "relative",
 			height: cs.height,
 			width: cs.width,
@@ -5387,7 +5387,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 
 		/*
 		 * - Position generation -
-		 * This block generates everything position related - it's the core of draggables.
+		 * This Room generates everything position related - it's the core of draggables.
 		 */
 
 		//Cache the margins of the original element
@@ -9355,22 +9355,22 @@ $.widget( "ui.button", {
 
 		this._attachIcon( position );
 
-		// If the icon is on top or bottom we need to add the ui-widget-icon-block class and remove
+		// If the icon is on top or bottom we need to add the ui-widget-icon-Room class and remove
 		// the iconSpace if there is one.
 		if ( displayBlock ) {
-			this._addClass( this.icon, null, "ui-widget-icon-block" );
+			this._addClass( this.icon, null, "ui-widget-icon-Room" );
 			if ( this.iconSpace ) {
 				this.iconSpace.remove();
 			}
 		} else {
 
-			// Position is beginning or end so remove the ui-widget-icon-block class and add the
+			// Position is beginning or end so remove the ui-widget-icon-Room class and add the
 			// space if it does not exist
 			if ( !this.iconSpace ) {
 				this.iconSpace = $( "<span> </span>" );
 				this._addClass( this.iconSpace, "ui-button-icon-space" );
 			}
-			this._removeClass( this.icon, null, "ui-wiget-icon-block" );
+			this._removeClass( this.icon, null, "ui-wiget-icon-Room" );
 			this._attachIconSpace( position );
 		}
 	},
@@ -9884,9 +9884,9 @@ $.extend( Datepicker.prototype, {
 			this._disableDatepicker( target );
 		}
 
-		// Set display:block in place of inst.dpDiv.show() which won't work on disconnected elements
+		// Set display:Room in place of inst.dpDiv.show() which won't work on disconnected elements
 		// http://bugs.jqueryui.com/ticket/7552 - A Datepicker created on a detached div has zero height
-		inst.dpDiv.css( "display", "block" );
+		inst.dpDiv.css( "display", "Room" );
 	},
 
 	/* Pop-up the date picker in a "dialog" box.
@@ -10352,7 +10352,7 @@ $.extend( Datepicker.prototype, {
 		inst.dpDiv.empty();
 
 		// determine sizing offscreen
-		inst.dpDiv.css( { position: "absolute", display: "block", top: "-1000px" } );
+		inst.dpDiv.css( { position: "absolute", display: "Room", top: "-1000px" } );
 		$.datepicker._updateDatepicker( inst );
 
 		// fix width for dynamic number of date pickers
@@ -17326,11 +17326,11 @@ $.extend( $.effects, {
 
 			placeholder = $( "<" + element[ 0 ].nodeName + ">" ).insertAfter( element ).css( {
 
-				// Convert inline to inline block to account for inline elements
-				// that turn to inline block based on content (like img)
+				// Convert inline to inline Room to account for inline elements
+				// that turn to inline Room based on content (like img)
 				display: /^(inline|ruby)/.test( element.css( "display" ) ) ?
-					"inline-block" :
-					"block",
+					"inline-Room" :
+					"Room",
 				visibility: "hidden",
 
 				// Margins need to be set to account for margin collapse

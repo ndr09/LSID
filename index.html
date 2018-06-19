@@ -4,75 +4,88 @@
 <head>
     <title>Test</title>
     <meta charset="utf-8">
-	
-	<link rel="stylesheet" href="bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="jquery/jquery-ui.css">
-	<link rel="stylesheet" href="css/contmenu.css">
-	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-	
-	<script src="jquery/external/jquery/jquery-3.3.1.min.js"></script>
-	<script src="jquery/external/jquery/jquery.js"></script>
-	<script src="jquery/jquery-ui.js"></script>
 
-	<script src="bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <link rel="stylesheet" href="css/contmenu.css">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 
-	<script src="https://two.js.org/third-party/url.js"></script>  
+    <script src="jquery/external/jquery/jquery-3.3.1.min.js"></script>
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+
+    <script src="bootstrap/bootstrap.js"></script>
+
+    <script src="https://two.js.org/third-party/url.js"></script>
 
     <script src="./script/two.js"></script>
 
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
-	<script src="./script/script.js"> </script>
+    <script src="./script/RoomLayout.js"></script>
 </head>
 <body>
-  <div class="py-5">
-    <div id ="main" class="container">
-      <div id ="lista" class="row">
-		<div class="col-md-3" >
-			<div class="list-goup">
-				<a id="TableSel" onclick="stat(2)" class="list-group-item active">Table <img height="28" width="28" class="img-responsive" src="img/small_table_1_1.png" ondrag="dragST(event)" draggable="true" ondragstart="dragStart(event)" >  </a>
-				<a id="LTableSel" onclick="stat(4)" class="list-group-item">Long Table <img height="28" width="56" class="img-responsive" src="img/small_table_2_1.png" ondrag="dragLT(event)" draggable="true" ondragstart="dragStart(event)" >  </a>
-				<a id="BlockSel" onclick="stat(3)" class="list-group-item">Blocked area</a>
-				<a id="DelSel" onclick="stat(1)" class="list-group-item">Delete</a>
-			 </div>	
-		</div>
-        <div id="test" class="col-md-6" contextmenu="false" onmousemove="resizer(event)" onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-		<div class="col-md-3" >
-			
-      </div>
-    </div>
-  </div>
-			<div class="hide" id="rmenu">
-            <ul>
-                <li>
-                    <a onclick="rotate()" >rotate</a>
-                </li>
+<div class="py-5">
+    <div id="main" class="container">
+        <div id="lista" class="row">
+            <div class="col-md-3">
+                <div class="list-goup">
+                    <a id="TableSel" onclick="stat(2)" class="list-group-item active">Table <img height="28" width="28"
+                                                                                                 class="img-responsive"
+                                                                                                 src="img/small_table_1_1.png"
+                                                                                                 ondrag="dragST(event)"
+                                                                                                 draggable="true"
+                                                                                                 ondragstart="dragStart(event)">
+                    </a>
+                    <a id="LTableSel" onclick="stat(4)" class="list-group-item">Long Table <img height="28" width="56"
+                                                                                                class="img-responsive"
+                                                                                                src="img/small_table_2_1.png"
+                                                                                                ondrag="dragLT(event)"
+                                                                                                draggable="true"
+                                                                                                ondragstart="dragStart(event)">
+                    </a>
+                    <a id="BlockSel" onclick="stat(3)" class="list-group-item">Blocked area</a>
+                    <a id="DelSel" onclick="stat(1)" class="list-group-item">Delete</a>
+                </div>
+            </div>
+            <div id="test" class="col-md-6" contextmenu="false" onmousemove="resizer(event)"
+                 onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)"
+                 ondragover="allowDrop(event)" draggable="false"></div>
+            <div class="col-md-3">
 
-                <li>
-                    <a onclick="removeTableOnclick()">delete</a>
-                </li>
-            </ul>
+            </div>
         </div>
+    </div>
+    <div class="hide" id="rmenu">
+        <ul>
+            <li>
+                <a onclick="rotate()">rotate</a>
+            </li>
 
-	<button class="btn btn-danger" onclick="RemoveAll()">clean</button>
-	<button class="btn btn-warning" onclick="draw()">draw</button>
-  
-  
-  
-  </div>
-  
-  
-	<script>
-		
-		$( "#tabs" ).tabs();
-	</script>
-	
-	
-	<script>
-		main();
+            <li>
+                <a onclick="removeTableOnclick()">delete</a>
+            </li>
+        </ul>
+    </div>
 
-	</script>
+    <button class="btn btn-danger" onclick="RemoveAll()">clean</button>
+    <button class="btn btn-warning" onclick="draw()">draw</button>
+    <button id="build" class="btn btn-primary" onclick="nextStep('build','next','pre')">build</button>
+    <button id="next" class="hide" onclick="nextRoom()">next</button>
+    <button id="pre" class="hide" onclick="preRoom()">previous</button>
+</div>
 
+
+<script>
+
+    $("#tabs").tabs();
+</script>
+
+
+<script>
+    main();
+
+</script>
 
 
 </body>

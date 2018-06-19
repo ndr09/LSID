@@ -2099,7 +2099,7 @@
           document.body.appendChild(this._element);
         }
 
-        this._element.style.display = 'block';
+        this._element.style.display = 'Room';
 
         this._element.removeAttribute('aria-hidden');
 
