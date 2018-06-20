@@ -1157,8 +1157,10 @@ function drawRoom(number) {
             console.log(Grid[j][i].id);
             var type = typeFromID(Grid[j][i].id);
             var id;
+
             if(type == "Block"){
                 id = (Grid[j][i].id).substring(5,(Grid[j][i].id).length);
+
             }else{
                 id = Grid[j][i].id;
             }
@@ -1168,6 +1170,7 @@ function drawRoom(number) {
                 useBlock(i, j);
             } else {
                // console.log("av");
+                clearBlock(i,j);
                 Grid[j][i] = ShortTable(i, j, 0);
             }
         }
