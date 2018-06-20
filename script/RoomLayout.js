@@ -663,6 +663,12 @@ function RemoveAll() {
     if (Long.length && Long.length > 0) {
         for (var i = Long.length - 1; i >= 0; i--) {
             RemoveLongTable(document.getElementById(Long[i].id));
+
+        }
+    }
+    if (Room.length && Room.length > 0) {
+        for (var i = Room.length - 1; i >= 0; i--) {
+            removeRoom(document.getElementById(Room[i].id));
         }
     }
 
@@ -952,7 +958,7 @@ function BlockPropreties(room) {
             //.log("  d ", lastClicked);
             if (RoomStatus == 1) {
 
-                removeRoom(room["id"]);
+                removeRoom(room);
             }
         });
     $(room._renderer.elem).draggable = "false";
@@ -1060,10 +1066,10 @@ function mouseMove(ev) {
 
 }
 
-function removeRoom(id) {
+function removeRoom(target) {
     var notFound = true;
     for (var i = 0; i < Room.length && notFound; i++) {
-        if (id == Room[i].id) {
+        if (target["id"] == Room[i].id) {
             notFound = false;
             //console.log(Room[i]);
             Room[i].fill = WHYTE;
