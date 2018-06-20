@@ -9,6 +9,7 @@ var id;
 var frm = "Room";
 var dragType;
 var two;
+var temp;
 var group;
 var RightID;
 var resize = false;
@@ -27,6 +28,7 @@ var obj = {
         {"0": [{"frm": "Y5X6"}, {"to": "Y6X7"}]}]
 };
 var LTtexture;
+var mouseDownFlag;
 var LTRtexture;
 var STtexture;
 var lastClicked;
@@ -862,14 +864,17 @@ function getRandomColor() {
 function MouseDown(ev) {
     ev.preventDefault();
     //console.log(ev);
+    mouseDownFlag = true;
     frm = ev.target.id;
     if (frm == "boundary") {
         frm = "Room";
     }
+    temp = new 
 }
 
 function MouseUp(ev) {
     ev.preventDefault();
+    mouseDownFlag = false;
     //console.log(ev);
     //console.log("mouse up", resize);
     if (resize) {
@@ -887,8 +892,9 @@ function MouseUp(ev) {
             var room = CreateBlock(Xfrom, Yfrom, Xto, Yto);
 
             Room[Room.length] = room;
-            //console.log(Xfrom, "   ", Yfrom, "   ", Xto, "   ", Yto, "   ", room.id);
+            console.log(Xfrom, "   ", Yfrom, "   ", Xto, "   ", Yto, "   ", room.id);
             two.update();
+
             BlockPropreties(room);
         }
     }
@@ -961,9 +967,10 @@ function BlockPropreties(room) {
 
 }
 
-function resizer(ev) {
-
-    var area;
+function mouseMove(ev) {
+    if(mouseDownFlag)
+        console.log(ev);
+    /*var area;
     if (resize) {
 
         for (var i = 0; i < Room.length; i++) {
@@ -1049,7 +1056,7 @@ function resizer(ev) {
             //console.log( area.translation.y);
             two.update();
         }
-    }
+    }*/
 
 }
 
@@ -1102,7 +1109,7 @@ function unavailableArea(i, j) {
 
 function nextRoom() {
     if (Room.length > roomNumber + 1) {
-        clearForOtherRoom();
+        //clearForOtherRoom();
 
         roomNumber++;
         console.log(roomNumber);
@@ -1114,7 +1121,7 @@ function nextRoom() {
 
 function preRoom() {
     if (roomNumber - 1 > -1) {
-        clearForOtherRoom();
+        //clearForOtherRoom();
 
         roomNumber--;
         console.log(roomNumber);
@@ -1140,19 +1147,27 @@ function drawRoom(number) {
     roomNumber = number;
     var house = Room[roomNumber].children;
     var idRooms = [];
-    console.log(Room[roomNumber].id);
+    console.log("pre   ",idRooms.length);
     for (var i = 0; i < house.length; i++) {
-
         idRooms[idRooms.length] = house[i].id;
     }
-
+    console.log("post   ",idRooms.length);
     for (var j = 1; j < COL; j++) {
         for (var i = 1; i < ROW; i++) {
-            //console.log(!idRooms.includes(Grid[j][i].id));
-            if (!idRooms.includes(Grid[j][i].id)) {
+            console.log(Grid[j][i].id);
+            var type = typeFromID(Grid[j][i].id);
+            var id;
+            if(type == "Block"){
+                id = (Grid[j][i].id).substring(5,(Grid[j][i].id).length);
+            }else{
+                id = Grid[j][i].id;
+            }
+            if (!idRooms.includes(id)) {
+                //console.log("not av");
                 Grid[j][i] = unavailableArea(i, j);
                 useBlock(i, j);
             } else {
+               // console.log("av");
                 Grid[j][i] = ShortTable(i, j, 0);
             }
         }
