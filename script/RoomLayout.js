@@ -869,7 +869,7 @@ function MouseDown(ev) {
     if (frm == "boundary") {
         frm = "Room";
     }
-    temp = new 
+    //temp = new
 }
 
 function MouseUp(ev) {
