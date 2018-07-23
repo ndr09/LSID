@@ -29,23 +29,29 @@
     <div id="main" class="container">
         <div id="lista" class="row">
             <div class="col-md-3">
-                <div class="list-goup">
+                <div class="list-group" id ="menuTable" hidden="true">
+
                     <a id="TableSel" onclick="stat(2)" class="list-group-item active">Table <img height="28" width="28"
                                                                                                  class="img-responsive"
                                                                                                  src="img/small_table_1_1.png"
                                                                                                  ondrag="dragST(event)"
                                                                                                  draggable="true"
-                                                                                                 ondragstart="dragStart(event)">
-                    </a>
-                    <a id="LTableSel" onclick="stat(4)" class="list-group-item">Long Table <img height="28" width="56"
+                                                                                                 ondragstart="dragStart(event)"></a>
+                    <a id="LTableSel" onclick="stat(3)" class="list-group-item">Long Table <img height="28" width="56"
                                                                                                 class="img-responsive"
                                                                                                 src="img/small_table_2_1.png"
                                                                                                 ondrag="dragLT(event)"
                                                                                                 draggable="true"
                                                                                                 ondragstart="dragStart(event)">
                     </a>
-                    <a id="BlockSel" onclick="stat(3)" class="list-group-item">Blocked area</a>
-                    <a id="DelSel" onclick="stat(1)" class="list-group-item">Delete</a>
+                    <a id="DelSel" onclick="stat(1)" class="list-group-item">Delete element</a>
+                </div >
+                <div class="list-goup" id ="menuRoom">
+                    <a id="addRoom" onclick="stat(1)" class="list-group-item active">Add Room</a>
+                    <a id="MoveRoom" onclick="stat(2)" class="list-group-item">Move Room</a>
+                    <a id="ResizeRoom" onclick="stat(3)" class="list-group-item">Resize room</a>
+                    <a id="Rubber" onclick="stat(4)" class="list-group-item">Rubber</a>
+                    <a id="RemoveRoom" onclick="stat(5)" class="list-group-item">RemoveRoom</a>
                 </div>
             </div>
             <div id="test" class="col-md-6" contextmenu="false" onmousemove="mouseMove(event)"
