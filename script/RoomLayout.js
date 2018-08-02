@@ -2,6 +2,9 @@ var RoomStatus = 1;
 var PhaseStatus = 0;
 var Grid = [];
 var Room = [];
+var RoomConf = [{}];
+var RoomOptions = {};
+var conf = 0;
 var Long = [];
 var Short = [];
 var bound;
@@ -47,7 +50,7 @@ var frmParent;
 
 const ROW = 20;
 const COL = 20;
-const GREY = "rgb(127,127,127)";
+let blockTexture = "rgb(127,127,127)";
 const WHYTE = "rgb(255,255,255)";
 const BLACK = "rgb(0,0,0)";
 const TRANSPARENT = "rgba(0,0,0,0)";
@@ -84,6 +87,53 @@ function main(idTag) {
             }
         }
     });
+    $("#sliderST").on("slidestop", function (event, ui) {
+        RoomOptions.ST = ui.value;
+    });
+    $("#sliderMiXD").on("slidestop", function (event, ui) {
+        RoomOptions.MiXD = ui.value;
+    });
+    $("#sliderMaXD").on("slidestop", function (event, ui) {
+        RoomOptions.MaXD = ui.value;
+
+    });
+    $("#sliderMiYD").on("slidestop", function (event, ui) {
+        RoomOptions.MiYD = ui.value;
+    });
+    $("#sliderMaYD").on("slidestop", function (event, ui) {
+        RoomOptions.MaYD = ui.value;
+    });
+    $("#sliderMiWD").on("slidestop", function (event, ui) {
+        RoomOptions.MiWD = ui.value;
+    });
+    $("#sliderMaWD").on("slidestop", function (event, ui) {
+        RoomOptions.MaWD = ui.value;
+    });
+    $("#sliderMiBD").on("slidestop", function (event, ui) {
+        RoomOptions.MiBD = ui.value;
+    });
+    $("#sliderMaBD").on("slidestop", function (event, ui) {
+        RoomOptions.MaBD = ui.value;
+    });
+    $("#sliderSTN").on("slidestop", function (event, ui) {
+        RoomOptions.STN = ui.value;
+    });
+    $("#sliderDN").on("slidestop", function (event, ui) {
+        RoomOptions.DN = ui.value;
+    });
+
+    RoomOptions.ST = 0;
+    RoomOptions.MiXD = 0;
+    RoomOptions.MaXD = 0;
+    RoomOptions.MiYD = 0;
+    RoomOptions.MaYD = 0;
+    RoomOptions.MiWD = 0;
+    RoomOptions.MaWD = 0;
+    RoomOptions.MiBD = 0;
+    RoomOptions.MaBD = 0;
+    RoomOptions.STN = 0;
+    RoomOptions.DN = 0;
+
     tabel(idTag);
     //HouseLayout();
 
@@ -113,10 +163,17 @@ function tabel(idTag) {
     LTtexture = new Two.Texture("img/small_table_2_1.png");
     LTRtexture = new Two.Texture("img/small_table_1_2.png");
     STtexture = new Two.Texture("img/small_table_1_1.png");
-    floorTexture[0] = new Two.Texture("img/1.png");
-    var contorno = two.makeRectangle(250, 250, 500, 500);
+    //Two.Texture.repeat = true;
+    floorTexture[0] = new Two.Texture("img/floor/0_1.png");
+
+    floorTexture[1] = new Two.Texture("img/floor/1_1.png");
+    floorTexture[2] = new Two.Texture("img/floor/2_1.png");
+    floorTexture[3] = new Two.Texture("img/floor/3_1.png");
+    floorTexture[4] = new Two.Texture("img/floor/4_1.png");
+    blockTexture = new Two.Texture("img/floor/block.png");
+    var contorno = two.makeRectangle(250, 250, 475, 475);
     contorno.id = "boundary";
-    contorno.linewidth = 0;
+    contorno.linewidth = 2;
     group = two.makeGroup();
     for (var j = 1; j < COL; j++) {
         Grid[j] = [];
@@ -218,8 +275,9 @@ function ShortTable(posX, posY, filler) {
         useBlock(posX, posY);
     }
     if (filler == 2) {
-        rect.fill = GREY;
-        rect.stroke = GREY;
+        rect.fill = blockTexture;
+        //rect.stroke = TRANSPARENT;
+        rect.linewidth = 0;
         rect.id = "BlockY";
         rect.id += posY + "X" + posX;
     }
@@ -917,7 +975,7 @@ function variation(type) {
 
     } else if (PhaseStatus == 1) {
         if (RoomStatus == 1) {
-            document.getElementById("DelSel").className = "list-group-item";
+            document.getElementById("DelElement").className = "list-group-item";
         }
         if (RoomStatus == 2) {
             document.getElementById("TableSel").className = "list-group-item";
@@ -927,7 +985,7 @@ function variation(type) {
         }
 
         if (type == 1) {
-            document.getElementById("DelSel").className = "list-group-item active";
+            document.getElementById("DelElement").className = "list-group-item active";
         }
         if (type == 2) {
             document.getElementById("TableSel").className = "list-group-item active";
@@ -1024,12 +1082,12 @@ function steps(a, b) {
 }
 
 function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
-    let width = x1*x2;
-   //console.log(y1,y2);
-    let height = y1*y2;
+    let width = x1 * x2;
+    //console.log(y1,y2);
+    let height = y1 * y2;
 
     let resGrid = [];
-   //console.log("max j ",height);
+    //console.log("max j ",height);
     for (let j = 0; j < height; j++) {
         resGrid[j] = [];
         for (let i = 0; i < width; i++) {
@@ -1042,7 +1100,7 @@ function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
     //console.log("first");
 
     //piu efficente se controllo solo i figli
-   //console.log("y ", y1, "   ", y2);
+    //console.log("y ", y1, "   ", y2);
     //console.log("x ", x1, "   ", x2);
     for (let j = 0; j < y1; j++) {
         for (let i = 0; i < x1; i++) {
@@ -1054,9 +1112,9 @@ function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
                 let frmY = j * steps(y1, y2);
                 //console.log(i, " °°° ", j);
                 //console.log(frmX, " -------- ", frmY, " ## ", frmX + steps(x1, x2), " -------- ", frmY + steps(y1, y2));
-                if(!(frmY + steps(y1, y2) > height) && !(frmX + steps(x1, x2) > width)) {
-                     resizingPopolater(resGrid, frmX, frmY, frmX + steps(x1, x2), frmY + steps(y1, y2));
-                }else{
+                if (!(frmY + steps(y1, y2) > height) && !(frmX + steps(x1, x2) > width)) {
+                    resizingPopolater(resGrid, frmX, frmY, frmX + steps(x1, x2), frmY + steps(y1, y2));
+                } else {
                     //console.log("blocke by check",frmY + steps(y1, y2) ,"   ", height, "  ", frmX + steps(x1, x2) ,"  ", width );
                 }
             }
@@ -1072,15 +1130,15 @@ function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
             let frmX = i * steps(x2, x1);
             let frmY = j * steps(y2, y1);
 
-            if((!(frmX + steps(x2, x1) > width)) && (!(frmY + steps(y2, y1) > height))) {
+            if ((!(frmX + steps(x2, x1) > width)) && (!(frmY + steps(y2, y1) > height))) {
                 if (resizingChecker(resGrid, frmX, frmY, frmX + steps(x2, x1), frmY + steps(y2, y1))) {
                     let id = "Y" + j + "X" + i;
                     //console.log("new child ", id);
                     resizedChildren[resizedChildren.length] = id;
                 }
-            }else{
-               //console.log(i, " °°° ", j);
-               //console.log("blocked by check y",frmY + steps(y2, y1) ,"   ", height,"  " ,(!(frmX + steps(y2, y1) > height))," x ", frmX + steps(x2, x1) ,"  ", width, "  ",(!(frmY + steps(x2, x1) > width)) );
+            } else {
+                //console.log(i, " °°° ", j);
+                //console.log("blocked by check y",frmY + steps(y2, y1) ,"   ", height,"  " ,(!(frmX + steps(y2, y1) > height))," x ", frmX + steps(x2, x1) ,"  ", width, "  ",(!(frmY + steps(x2, x1) > width)) );
             }
 
         }
@@ -1103,7 +1161,7 @@ function MouseDown(ev) {
     if (RoomStatus === 2 || RoomStatus === 3) {
         lastY = mouseY(ev);
         lastX = mouseX(ev);
-       //console.log(ev);
+        //console.log(ev);
     }
     frm = ev.target.id;
     let t = ev["target"];
@@ -1119,7 +1177,7 @@ function MouseUp(ev) {
     ev.preventDefault();
     mouseDownFlag = false;
     document.getElementById("main").style.cursor = "auto";
-   //console.log('remove', bound, '   ', resizeFlag);
+    //console.log('remove', bound, '   ', resizeFlag);
     if (tempRoom != null) {
         let dimension = fromRoomIdToArrayBound(selectedRoom.id);
         let newDimension = fromRoomIdToArrayBound(tempRoom.id);
@@ -1136,27 +1194,27 @@ function MouseUp(ev) {
         for (let i = 0; i < selectedRoom.children.length; i++) {
             children[i] = selectedRoom.children[i].id;
         }
-        console.log("dimension ",dimension);
-        console.log("new dimension",newDimension);
+        console.log("dimension ", dimension);
+        console.log("new dimension", newDimension);
         let newFilterChildren = resizingGrid(x1, y1, x2, y2, children, dimension[1], dimension[0]);
-        console.log("filter children ",newFilterChildren);
+        console.log("filter children ", newFilterChildren);
         //console.log("offset ",x1,"   " ,y1);
         removeRoom(selectedRoom);
         //console.log("new position ",position[1],"  " , position[0],"  " , position[3] + 1,"  " , position[2]);
         //console.log("=================");
         let room = CreateBlockFiltered(newDimension[1], newDimension[0], newDimension[3], newDimension[2], newFilterChildren, newDimension[1], newDimension[0]);
         Room[Room.length] = room;
-       //console.log("new room",room);
+        //console.log("new room",room);
         resizeFlag = false;
         two.update();
         BlockPropreties(room);
     } else if (bound != null && resizeFlag) {
-       //console.log("second if");
+        //console.log("second if");
         removeBoundary();
         createResizeBoundary(selectedRoom);
         resizeFlag = false;
     } else {
-       //console.log("third if");
+        //console.log("third if");
         lastX = 0;
         var id = frm.substring(0, 5);
         if (id != "Room" && RoomStatus == 1 && ev.button == 0 && PhaseStatus == 0) {
@@ -1193,21 +1251,30 @@ function CreateBlock(Xfrom, Yfrom, Xto, Yto) {
     var color = getRandomColor();
     for (var i = Xfrom; i <= Xto; i++)
         for (var j = Yfrom; j <= Yto; j++) {
-            Grid[j][i].fill = color;
-            Grid[j][i].fill = floorTexture[0];
-            Grid[j][i].linewidth = 1;
-            Grid[j][i].stroke = color;
+            //Grid[j][i].fill = color;
+            //Grid[j][i].fill = floorTexture[0];
+            //Grid[j][i].linewidth = 0;
+            //Grid[j][i].stroke = TRANSPARENT;
+
             //useBlock(i, j);
             //console.log(blockStatus[j][i], "  ", j, "  ", i);
             room.add(Grid[j][i]);
         }
-    room.fill = color;
-    //room.fill =  floorTexture[0];
+    //room.fill = color;
+    room.fill = nextFillTexture(Room.length);
+    //room.noStroke();
+    room.stroke = nextFillTexture(Room.length);
     room.id = "roomF"
     room.id += Yfrom + "X" + Xfrom + "T" + Yto + "X" + Xto;
 
     //console.log(room);
     return room;
+
+}
+
+function nextFillTexture(pos) {
+
+    return floorTexture[(pos % floorTexture.length)];
 
 }
 
@@ -1327,7 +1394,7 @@ function boundaryProprieties(boundary) {
             resizeFlag = true;
             resizingDirection = "RC";
             document.getElementById("main").style.cursor = "w-resize";
-           //console.log("how ", e);
+            //console.log("how ", e);
         });
     $(boundary.children.ids["RD"]._renderer.elem)
         .mousedown(function (e) {
@@ -1363,7 +1430,7 @@ function boundaryProprieties(boundary) {
         resizeFlag = true;
         mouseDownFlag = true;
         resizingDirection = "RD";
-       //console.log('here');
+        //console.log('here');
         document.getElementById("main").style.cursor = "se-resize";
     });
     $(boundary.children.ids["RU"]._renderer.elem).mousedown(function (e) {
@@ -1376,7 +1443,7 @@ function boundaryProprieties(boundary) {
         resizeFlag = true;
         mouseDownFlag = true;
         resizingDirection = "LD";
-       //console.log('here');
+        //console.log('here');
         document.getElementById("main").style.cursor = "sw-resize";
     });
     $(boundary.children.ids["LU"]._renderer.elem).mousedown(function (e) {
@@ -1598,7 +1665,7 @@ function mouseMove(ev) {
 
         let Y = mouseY(ev);
         let X = mouseX(ev);
-       //console.log("___________________ ");
+        //console.log("___________________ ");
         if (area != null) {
             fill = area.fill;
             let children = [];
@@ -1714,7 +1781,7 @@ function mouseMove(ev) {
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                       //console.log("delete bound");
+                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
@@ -1727,7 +1794,7 @@ function mouseMove(ev) {
                         two.update();
                     }
                     if (dimension[3] - 2 < dimension[1]) {
-                       //console.log('ciao');
+                        //console.log('ciao');
                         dimension[3]++;
                     }
                     let centerX = ((dimension[3] - 1 - dimension[1]) / 2) + dimension[1];
@@ -1745,7 +1812,7 @@ function mouseMove(ev) {
                 if (X > lastX + 25 && flag) { //N
                     lastX = X;
                     flag = false;
-                   //console.log((bound == null), "  ", (tempRoom == null));
+                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -1810,7 +1877,7 @@ function mouseMove(ev) {
                 if (Y > lastY + 25 && flag) { //N
                     lastY = Y;
                     flag = false;
-                   //console.log((bound == null), "  ", (tempRoom == null));
+                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -1875,7 +1942,7 @@ function mouseMove(ev) {
                 if (Y > lastY + 25 && flag) { //N
                     lastY = Y;
                     flag = false;
-                   //console.log((bound == null), "  ", (tempRoom == null));
+                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -1941,7 +2008,7 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                   //console.log((bound == null), "  ", (tempRoom == null));
+                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -1965,7 +2032,7 @@ function mouseMove(ev) {
                     // //console.log("d ", dimension);
                     let centerX = (((dimension[3] + 1) - dimension[1]) / 2) + dimension[1];
                     let centerY = (((dimension[2] + 1) - dimension[0]) / 2) + dimension[0];
-                   //console.log(centerX, "   ", centerY);
+                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1]) + "T" + (dimension[2] + 1) + "X" + (dimension[3] + 1);
@@ -2015,7 +2082,7 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                   //console.log((bound == null), "  ", (tempRoom == null));
+                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -2039,7 +2106,7 @@ function mouseMove(ev) {
                     // //console.log("d ", dimension);
                     let centerX = (((dimension[3] + 1) - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - (dimension[0] - 1)) / 2) + (dimension[0] - 1);
-                   //console.log(centerX, "   ", centerY);
+                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] - 1) + "X" + (dimension[1]) + "T" + (dimension[2]) + "X" + (dimension[3] + 1);
@@ -2073,12 +2140,12 @@ function mouseMove(ev) {
                         dimension[3]++;
                     }
                     let centerX = (((dimension[3] - 1) - dimension[1]) / 2) + dimension[1];
-                    let centerY = (((dimension[2]) - (dimension[0]+1)) / 2) + (dimension[0]+1);
+                    let centerY = (((dimension[2]) - (dimension[0] + 1)) / 2) + (dimension[0] + 1);
                     //console.log(dimension);
                     //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
-                    tempRoom.id += (dimension[0]+1) + "X" + (dimension[1]) + "T" + (dimension[2] ) + "X" + (dimension[3] - 1);
+                    tempRoom.id += (dimension[0] + 1) + "X" + (dimension[1]) + "T" + (dimension[2]) + "X" + (dimension[3] - 1);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
                     createResizeBoundary(tempRoom);
@@ -2090,7 +2157,7 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                   ////console.log((bound == null), "  ", (tempRoom == null));
+                    ////console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -2117,13 +2184,13 @@ function mouseMove(ev) {
                     //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
-                    tempRoom.id += (dimension[0]) + "X" + (dimension[1]-1) + "T" + (dimension[2] + 1) + "X" + (dimension[3]);
+                    tempRoom.id += (dimension[0]) + "X" + (dimension[1] - 1) + "T" + (dimension[2] + 1) + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
                     // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y < lastY - 25 && X > lastX + 25 && flag) {
-                   //console.log(resizingDirection,"  ",Y,"   ",lastY,"   ",X,"   ",lastX);
+                    //console.log(resizingDirection,"  ",Y,"   ",lastY,"   ",X,"   ",lastX);
                     lastY = Y;
                     lastX = X;
                     flag = false;
@@ -2142,22 +2209,22 @@ function mouseMove(ev) {
                         two.update();
                     }
                     if (dimension[2] - 1 < dimension[0]) {
-                       ////console.log("Y secure");
+                        ////console.log("Y secure");
                         dimension[2]++;
 
                     }
                     if (dimension[3] - 1 < dimension[1]) {
-                      // //console.log("X secure");
+                        // //console.log("X secure");
 
                         dimension[3]++;
                     }
-                    let centerX = (((dimension[3]) - (dimension[1]+1)) / 2) + (dimension[1]+1);
-                    let centerY = (((dimension[2]-1) - (dimension[0])) / 2) + (dimension[0]);
+                    let centerX = (((dimension[3]) - (dimension[1] + 1)) / 2) + (dimension[1] + 1);
+                    let centerY = (((dimension[2] - 1) - (dimension[0])) / 2) + (dimension[0]);
                     //console.log(dimension);
                     //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
-                    tempRoom.id += (dimension[0]) + "X" + (dimension[1]+1) + "T" + (dimension[2] -1) + "X" + (dimension[3] );
+                    tempRoom.id += (dimension[0]) + "X" + (dimension[1] + 1) + "T" + (dimension[2] - 1) + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
                     createResizeBoundary(tempRoom);
@@ -2168,7 +2235,7 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                   ////console.log((bound == null), "  ", (tempRoom == null));
+                    ////console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
                         //console.log("delete bound");
@@ -2186,7 +2253,7 @@ function mouseMove(ev) {
                     if (dimension[0] - 1 < 0) {
                         dimension[0]++;
                     }
-                    if (dimension[1] - 1 <0) {
+                    if (dimension[1] - 1 < 0) {
                         dimension[1]++;
                     }
                     // //console.log("d ", dimension);
@@ -2304,6 +2371,60 @@ function unavailableArea(i, j) {
     return blockArea;
 }
 
+function nextConf() {
+    console.log(conf, ' ciao ', RoomConf.length);
+    if (RoomConf.length > conf + 1) {
+        saveConf(conf);
+        conf++;
+        console.log('next', conf);
+        //console.log(RoomConf);
+        if (RoomConf.hasOwnProperty(conf)) {
+            restoreRoomConf(conf);
+        }
+    }
+}
+
+function preConf() {
+    if (conf - 1 > -1) {
+        //console.log(RoomConf);
+        saveConf(conf);
+        conf--;
+        console.log('pre', conf);
+        if (RoomConf.hasOwnProperty(conf)) {
+            console.log("her");
+            restoreRoomConf(conf);
+        }
+    }
+}
+
+function newConf() {
+
+    console.log(conf);
+    saveConf(conf);
+    conf = RoomConf.length;
+    RoomConf[RoomConf.length] = {};
+    console.log(conf);
+    console.log(RoomConf);
+    RemoveAllInRoom;
+}
+
+function saveConf(number) {
+    console.log('po ', RoomConf);
+    RoomConf[number].Short = Short.slice();
+    RoomConf[number].Long = Long.slice();
+
+    RemoveAllInRoom();
+}
+
+function restoreRoomConf(number) {
+    var room = {
+        "Long": RoomConf[number]["Long"],
+        "Short": RoomConf[number]["Short"]
+    };
+    console.log(room);
+    draw(room);
+}
+
 function nextRoom() {
     if (Room.length > roomNumber + 1) {
         //clearForOtherRoom();
@@ -2312,12 +2433,16 @@ function nextRoom() {
         //console.log(savedRoom);
         roomNumber++;
         id = "Room" + roomNumber;
-
+        conf = 0;
         drawRoom(roomNumber);
         if (savedRoom.hasOwnProperty(id)) {
-            //console.log("##### GIA SALVATA");
+            //console.log("#####
+            RoomConf = savedRoom[id];
             restoreRoom(roomNumber);
             //recreateRoom(savedRoom[roomNumber]);
+        } else {
+            RoomConf = [];
+            RoomConf[0] = {};
         }
 
     }
@@ -2336,11 +2461,18 @@ function preRoom() {
 
         //console.log(roomNumber);
         drawRoom(roomNumber);
+        conf = 0;
         //console.log("    "+savedRoom[id]);
         if (savedRoom.hasOwnProperty(id)) {
+            //console.log(savedRoom[id].length);
+            RoomConf = savedRoom[id];
+            //console.log(RoomConf.length);
             restoreRoom(roomNumber);
             //console.log(Long.length);
             //recreateRoom(savedRoom[roomNumber]);
+        } else {
+            RoomConf = [];
+            RoomConf[0] = {};
         }
     }
 
@@ -2348,9 +2480,21 @@ function preRoom() {
 
 function saveRoom(number) {
     id = "Room" + number;
-    savedRoom[id] = {};
-    savedRoom[id]["Short"] = Short.slice();
-    savedRoom[id]["Long"] = Long.slice();
+    savedRoom[id] = [];
+    console.log('ehi');
+    console.log(RoomConf);
+    console.log(RoomConf.length);
+    /*let pos = RoomConf.length;
+    RoomConf[pos] = {};*/
+    RoomConf[conf].Short = Short.slice();
+    RoomConf[conf].Long = Long.slice();
+    console.log(savedRoom);
+    for (let i = 0; i < RoomConf.length; i++) {
+        savedRoom[id][i] = {};
+        savedRoom[id][i]["Short"] = RoomConf[i].Short.slice();
+        savedRoom[id][i]["Long"] = RoomConf[i].Long.slice();
+    }
+    RoomConf = [];
     /*console.log("SAVING " + id);
    //console.log("##################");
    //console.log(Long);
@@ -2370,9 +2514,14 @@ function restoreRoom(number) {
    //console.log(savedRoom[id]["Long"]);
    //console.log("##################");*/
     var room = {
-        "Long": savedRoom[id]["Long"],
-        "Short": savedRoom[id]["Short"]
+        "Long": savedRoom[id][0]["Long"],
+        "Short": savedRoom[id][0]["Short"]
     };
+    for (let i = 0; i < savedRoom[id].length; i++) {
+        RoomConf[i].Short = savedRoom[id][i]["Short"].slice();
+        RoomConf[i].Long = savedRoom[id][i]["Long"].slice();
+
+    }
     //Short = savedRoom[id]["Short"];
     //Long  = savedRoom[id]["Long"];
 
@@ -2380,7 +2529,7 @@ function restoreRoom(number) {
 
 }
 
-function nextStep(build, next, pre) {
+function nextStep() {
     for (let i = 0; i < Room.length; i++) {
         if (Room[i].children.length === 0) {
             removeRoom(Room[i]);
@@ -2395,9 +2544,27 @@ function nextStep(build, next, pre) {
         document.getElementById("menuTable").hidden = false;
         document.getElementById("next").className = "btn btn-primary";
         document.getElementById("pre").className = "btn btn-primary";
+        document.getElementById("send").className = "btn btn-warning";
+        document.getElementById("nextConf").className = "btn btn-primary";
+        document.getElementById("preConf").className = "btn btn-primary";
+        document.getElementById("newConf").className = "btn btn-primary";
         ClearHouseToRoom();
         drawRoom(0);
     }
+
+
+}
+
+function collectAndSend() {
+
+    saveConf(conf);
+    restoreRoomConf(conf);
+    let data = {};
+    data.option = RoomOptions;
+    data.room = Room[roomNumber].id;
+    data.conf = RoomConf[conf];
+    console.log(RoomConf[conf]);
+    console.log(data);
 
 
 }
@@ -2425,7 +2592,12 @@ function drawRoom(number) {
             }
             if (!idRooms.includes(id)) {
                 //console.log("not av");
-                Grid[j][i] = unavailableArea(i, j);
+                //Grid[j][i].stroke = TRANSPARENT;
+                //two.remove(Grid[j][i]);
+                Grid[j][i].linewidth = 1;
+                Grid[j][i].fill = blockTexture;
+                //Grid[j][i] = unavailableArea(i, j);
+                Grid[j][i].stroke = blockTexture;
                 useBlock(i, j);
             } else {
                 //console.log("av");
