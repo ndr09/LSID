@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="28864f08-6b61-4e36-aa02-0b1149e39895" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nice_table_1_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nice_table_1_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nice_table_2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/RoomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/RoomLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/two.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/two.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="119" column="59" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="59" />
+            <state relative-caret-position="323">
+              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -40,14 +33,49 @@
       <file leaf-file-name="RoomLayout.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/RoomLayout.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="561" column="29" lean-forward="true" selection-start-line="561" selection-start-column="29" selection-end-line="561" selection-end-column="29" />
+            <state relative-caret-position="263">
+              <caret line="2581" column="22" selection-start-line="2581" selection-start-column="22" selection-end-line="2581" selection-end-column="22" />
               <folding>
-                <element signature="e#2287#2339#0" />
-                <element signature="e#2400#2452#0" />
-                <element signature="e#2513#2565#0" />
-                <element signature="e#2626#2678#0" />
-                <marker date="1533195135181" expanded="true" signature="2257:3398" ph="..." />
+                <element signature="e#453#526#0" />
+                <element signature="e#459#524#0" />
+                <element signature="e#538#730#0" />
+                <element signature="e#552#600#0" />
+                <element signature="e#615#662#0" />
+                <element signature="e#677#728#0" />
+                <element signature="e#1046#3816#0" />
+                <element signature="e#1095#1163#0" />
+                <element signature="e#1204#2250#0" />
+                <element signature="e#1308#2244#0" />
+                <element signature="e#1408#1482#0" />
+                <element signature="e#1495#2234#0" />
+                <element signature="e#2309#2351#0" />
+                <element signature="e#2412#2456#0" />
+                <element signature="e#2517#2562#0" />
+                <element signature="e#2623#2667#0" />
+                <element signature="e#2728#2772#0" />
+                <element signature="e#2833#2877#0" />
+                <element signature="e#2938#2982#0" />
+                <element signature="e#3043#3087#0" />
+                <element signature="e#3148#3192#0" />
+                <element signature="e#3252#3295#0" />
+                <element signature="e#3354#3396#0" />
+                <element signature="e#3860#3891#0" />
+                <element signature="e#3959#4031#0" />
+                <element signature="e#4829#5023#0" />
+                <element signature="e#4920#5017#0" />
+                <element signature="e#5047#5062#0" />
+                <element signature="e#5064#5093#0" />
+                <element signature="e#5119#5147#0" />
+                <element signature="e#5172#5231#0" />
+                <element signature="e#5251#6247#0" />
+                <element signature="e#5426#6245#0" />
+                <element signature="e#5536#5908#0" />
+                <element signature="e#5938#6239#0" />
+                <element signature="e#5984#6228#0" />
+                <element signature="e#6269#6326#0" />
+                <element signature="e#6348#6404#0" />
+                <element signature="e#6535#6630#0" />
+                <element signature="e#6652#6786#0" />
               </folding>
             </state>
           </provider>
@@ -64,7 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>variation</find>
       <find>stat</find>
       <find>resize</find>
       <find>mouseY</find>
@@ -94,6 +121,7 @@
       <find>bound</find>
       <find>selectedRoom</find>
       <find>CreateBlo</find>
+      <find>next</find>
     </findStrings>
     <replaceStrings>
       <replace>utils.ROW</replace>
@@ -143,6 +171,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,7 +188,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,21 +264,26 @@
       <workItem from="1533042557905" duration="61000" />
       <workItem from="1533054046403" duration="35000" />
       <workItem from="1533150285052" duration="2945000" />
-      <workItem from="1533192042249" duration="3091000" />
+      <workItem from="1533192042249" duration="3689000" />
+      <workItem from="1533198534038" duration="20000" />
+      <workItem from="1533234953098" duration="598000" />
+      <workItem from="1533304105480" duration="886000" />
+      <workItem from="1533538519034" duration="4408000" />
+      <workItem from="1533546254408" duration="16078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182884000" />
+    <option name="totallyTimeSpent" value="205472000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.075520836" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5015625" side_tool="true" visible="true" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5019531" side_tool="true" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -263,7 +296,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.4984375" visible="true" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49804688" visible="true" weight="0.32816902" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,14 +310,14 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/script/RoomLayout.js</url>
-          <line>1373</line>
+          <line>1379</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="21" />
+      <option name="time" value="23" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -593,8 +626,8 @@
     <entry file="file://$PROJECT_DIR$/script/utils.js" />
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="119" column="59" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="59" />
+        <state relative-caret-position="323">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -604,14 +637,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/RoomLayout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="561" column="29" lean-forward="true" selection-start-line="561" selection-start-column="29" selection-end-line="561" selection-end-column="29" />
+        <state relative-caret-position="263">
+          <caret line="2581" column="22" selection-start-line="2581" selection-start-column="22" selection-end-line="2581" selection-end-column="22" />
           <folding>
-            <element signature="e#2287#2339#0" />
-            <element signature="e#2400#2452#0" />
-            <element signature="e#2513#2565#0" />
-            <element signature="e#2626#2678#0" />
-            <marker date="1533195135181" expanded="true" signature="2257:3398" ph="..." />
+            <element signature="e#453#526#0" />
+            <element signature="e#459#524#0" />
+            <element signature="e#538#730#0" />
+            <element signature="e#552#600#0" />
+            <element signature="e#615#662#0" />
+            <element signature="e#677#728#0" />
+            <element signature="e#1046#3816#0" />
+            <element signature="e#1095#1163#0" />
+            <element signature="e#1204#2250#0" />
+            <element signature="e#1308#2244#0" />
+            <element signature="e#1408#1482#0" />
+            <element signature="e#1495#2234#0" />
+            <element signature="e#2309#2351#0" />
+            <element signature="e#2412#2456#0" />
+            <element signature="e#2517#2562#0" />
+            <element signature="e#2623#2667#0" />
+            <element signature="e#2728#2772#0" />
+            <element signature="e#2833#2877#0" />
+            <element signature="e#2938#2982#0" />
+            <element signature="e#3043#3087#0" />
+            <element signature="e#3148#3192#0" />
+            <element signature="e#3252#3295#0" />
+            <element signature="e#3354#3396#0" />
+            <element signature="e#3860#3891#0" />
+            <element signature="e#3959#4031#0" />
+            <element signature="e#4829#5023#0" />
+            <element signature="e#4920#5017#0" />
+            <element signature="e#5047#5062#0" />
+            <element signature="e#5064#5093#0" />
+            <element signature="e#5119#5147#0" />
+            <element signature="e#5172#5231#0" />
+            <element signature="e#5251#6247#0" />
+            <element signature="e#5426#6245#0" />
+            <element signature="e#5536#5908#0" />
+            <element signature="e#5938#6239#0" />
+            <element signature="e#5984#6228#0" />
+            <element signature="e#6269#6326#0" />
+            <element signature="e#6348#6404#0" />
+            <element signature="e#6535#6630#0" />
+            <element signature="e#6652#6786#0" />
           </folding>
         </state>
       </provider>

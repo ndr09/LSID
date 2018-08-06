@@ -164,12 +164,11 @@ function tabel(idTag) {
     LTRtexture = new Two.Texture("img/small_table_1_2.png");
     STtexture = new Two.Texture("img/small_table_1_1.png");
     //Two.Texture.repeat = true;
-    floorTexture[0] = new Two.Texture("img/floor/0_1.png");
-
-    floorTexture[1] = new Two.Texture("img/floor/1_1.png");
-    floorTexture[2] = new Two.Texture("img/floor/2_1.png");
-    floorTexture[3] = new Two.Texture("img/floor/3_1.png");
-    floorTexture[4] = new Two.Texture("img/floor/4_1.png");
+    floorTexture[0] = "#FFFF66";
+    floorTexture[1] = "#987654";
+    floorTexture[2] = "#77DD77";
+    floorTexture[3] = "#0F52BA";
+    floorTexture[4] = "#DC143C";
     blockTexture = new Two.Texture("img/floor/block.png");
     var contorno = two.makeRectangle(250, 250, 475, 475);
     contorno.id = "boundary";
@@ -273,13 +272,6 @@ function ShortTable(posX, posY, filler) {
         rect.id = "ShortY";
         rect.id += posY + "X" + posX;
         useBlock(posX, posY);
-    }
-    if (filler == 2) {
-        rect.fill = blockTexture;
-        //rect.stroke = TRANSPARENT;
-        rect.linewidth = 0;
-        rect.id = "BlockY";
-        rect.id += posY + "X" + posX;
     }
 
     return rect;
@@ -566,7 +558,7 @@ function removeTableOnclick() {
                     break;
                 case 3:
                     Y += 0.5;
-
+                    break;
                 default:
             }
 
@@ -700,6 +692,7 @@ function NearFreeBlock(X, Y) {
 *
 *
 * */
+// pos[0]=frmY; pos[1]=frmX;pos[2]=toY; pos[3]=toX;
 function fromRoomIdToArrayBound(str) {
     var pos = [];
     var exitFlag = true;
@@ -845,22 +838,6 @@ function draw(data) {
         ShortTableProprieties(rect);
 
     }
-    /*
-        for (var i = 0; i < data["Block"].length; i++) {
-            var t = data["Block"][i][0];
-            //console.log(t);
-            frmX = fromIDtoPosX(t[0]["frm"]);
-            frmY = fromIDtoPosY(t[0]["frm"]);
-            toX = fromIDtoPosX(t[1]["to"]);
-            toY = fromIDtoPosY(t[1]["to"]);
-
-            var b = CreateBlock(frmX, frmY, toX, toY);
-            Room[Room.length] = b;
-            two.update();
-            BlockPropreties(b);
-
-        }*/
-
 }
 
 function typeFromID(str) {
@@ -1045,6 +1022,31 @@ function GCD(a, b) {
 function LCM(a, b) {
     return (a * b) / GCD(a, b);
 }
+// pos[0]=frmY; pos[1]=frmX;pos[2]=toY; pos[3]=toX;
+function checkAndValidateID(room){
+    let id = room.id;
+    let roomDimension = fromRoomIdToArrayBound(id);
+    let validDimension = [27,27,0,0];
+    for (let i = 0; i < selectedRoom.children.length; i++) {
+        let Y = fromIDtoPosY(selectedRoom.children[i].id);
+        let X = fromIDtoPosX(selectedRoom.children[i].id);
+
+        if(Y <validDimension[0]){
+            validDimension[0] = Y;
+        }else if(Y > validDimension[2]){
+            validDimension[2] = Y;
+        }
+        if(X <validDimension[1]){
+            validDimension[1] = X;
+        }else if(X > validDimension[3]){
+            validDimension[3] = X;
+        }
+    }
+    console.log(id);
+    let newId = "roomF"+validDimension[0]+"X"+validDimension[1]+"T"+validDimension[2]+"X"+validDimension[3];
+    console.log(newId)
+    room.id = newId;
+};
 
 /* resize aux function */
 function resizingPopolater(resizeGrid, frmX, frmY, toX, toY) {
@@ -1181,6 +1183,7 @@ function MouseUp(ev) {
     if (tempRoom != null) {
         let dimension = fromRoomIdToArrayBound(selectedRoom.id);
         let newDimension = fromRoomIdToArrayBound(tempRoom.id);
+        let fill = selectedRoom.fill;
         removeBoundary();
         removeRoom(selectedRoom);
         tempRoom._renderer.elem.remove();
@@ -1199,10 +1202,13 @@ function MouseUp(ev) {
         let newFilterChildren = resizingGrid(x1, y1, x2, y2, children, dimension[1], dimension[0]);
         console.log("filter children ", newFilterChildren);
         //console.log("offset ",x1,"   " ,y1);
+
         removeRoom(selectedRoom);
         //console.log("new position ",position[1],"  " , position[0],"  " , position[3] + 1,"  " , position[2]);
         //console.log("=================");
         let room = CreateBlockFiltered(newDimension[1], newDimension[0], newDimension[3], newDimension[2], newFilterChildren, newDimension[1], newDimension[0]);
+        room.fill = fill;
+        room.stroke = fill;
         Room[Room.length] = room;
         //console.log("new room",room);
         resizeFlag = false;
@@ -1476,6 +1482,7 @@ function BlockPropreties(room) {
                     for (let i = 0; i < Room.length; i++) {
                         if (Room[i].id === room.id) {
                             selectedRoom = room;
+                            checkAndValidateID(selectedRoom);
                             createResizeBoundary(room);
                             console.log(room);
                         }
@@ -2366,9 +2373,10 @@ function clearForOtherRoom() {
     }
 }
 
-function unavailableArea(i, j) {
-    blockArea = ShortTable(i, j, 2);
-    return blockArea;
+function unavailableArea(cell) {
+    cell.noStroke();
+    cell.fill = blockTexture;
+    cell.stroke = blockTexture;
 }
 
 function nextConf() {
@@ -2530,6 +2538,9 @@ function restoreRoom(number) {
 }
 
 function nextStep() {
+    if(bound != null){
+       //removeBoundary();
+    }
     for (let i = 0; i < Room.length; i++) {
         if (Room[i].children.length === 0) {
             removeRoom(Room[i]);
@@ -2537,7 +2548,6 @@ function nextStep() {
     }
     if (Room.length > 0) {
         PhaseStatus = 1;
-
         RoomStatus = 2;
         document.getElementById("build").className = "hide";
         document.getElementById("menuRoom").hidden = true;
@@ -2548,7 +2558,8 @@ function nextStep() {
         document.getElementById("nextConf").className = "btn btn-primary";
         document.getElementById("preConf").className = "btn btn-primary";
         document.getElementById("newConf").className = "btn btn-primary";
-        ClearHouseToRoom();
+        //ClearHouseToRoom();
+        Room[0].stroke = TRANSPARENT;
         drawRoom(0);
     }
 
@@ -2560,27 +2571,49 @@ function collectAndSend() {
     saveConf(conf);
     restoreRoomConf(conf);
     let data = {};
-    data.option = RoomOptions;
-    data.room = Room[roomNumber].id;
-    data.conf = RoomConf[conf];
-    console.log(RoomConf[conf]);
+    data.option = Object.assign({}, RoomOptions);
+    data.room = Room[roomNumber].id.slice();
+    data.conf = Object.assign({}, RoomConf[conf]);
     console.log(data);
+    fetch("https://lsid-server.herokuapp.com/request/s", {
+
+        method: "POST",
+
+        mode : 'cors',
+        credentials : 'omit',
+        headers: {
+            Origin: "",
+            Accept: "application/json",
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: data
+
+    }).then((response) => {
+
+       console.log(response);
+
+    });
+
 
 
 }
 
 function drawRoom(number) {
     roomNumber = number;
-    var house = Room[roomNumber].children;
-    var idRooms = [];
+    let house = Room[roomNumber].children;
+    let fill =Room[roomNumber].fill ;
+    let idRooms = [];
     //console.log("pre   ",idRooms.length);
     for (var i = 0; i < house.length; i++) {
         idRooms[idRooms.length] = house[i].id;
     }
-    //console.log("post   ",idRooms.length);
+    console.log(idRooms,"  ",idRooms.length);
     for (var j = 1; j < COL; j++) {
         for (var i = 1; i < ROW; i++) {
-            //console.log(Grid[j][i].id);
+            //console.log(Grid[j][i]);
             var type = typeFromID(Grid[j][i].id);
             var id;
 
@@ -2591,18 +2624,15 @@ function drawRoom(number) {
                 id = Grid[j][i].id;
             }
             if (!idRooms.includes(id)) {
-                //console.log("not av");
-                //Grid[j][i].stroke = TRANSPARENT;
+                console.log("not av");
                 //two.remove(Grid[j][i]);
-                Grid[j][i].linewidth = 1;
-                Grid[j][i].fill = blockTexture;
-                //Grid[j][i] = unavailableArea(i, j);
-                Grid[j][i].stroke = blockTexture;
+
+                unavailableArea(Grid[j][i]);
                 useBlock(i, j);
             } else {
-                //console.log("av");
                 clearBlock(i, j);
                 Grid[j][i] = ShortTable(i, j, 0);
+                Grid[j][i].fill = fill;
             }
         }
     }
