@@ -2593,7 +2593,7 @@ function collectAndSend() {
     data.Short = shortID.slice();
     data.Long = longID.slice();
     data.children = idRooms.slice();
-    fetch("http://localhost:3000/request/s", {
+    fetch("https://lsid-server.herokuapp.com/request/s", {
 
         method: 'POST',
         mode: 'cors',

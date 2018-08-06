@@ -32,8 +32,8 @@
       <file leaf-file-name="RoomLayout.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/RoomLayout.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="2609" column="11" selection-start-line="2609" selection-start-column="11" selection-end-line="2609" selection-end-column="11" />
+            <state relative-caret-position="256">
+              <caret line="2595" column="45" selection-start-line="2595" selection-start-column="45" selection-end-line="2595" selection-end-column="45" />
               <folding>
                 <element signature="e#453#526#0" />
                 <element signature="e#459#524#0" />
@@ -268,12 +268,12 @@
       <workItem from="1533234953098" duration="598000" />
       <workItem from="1533304105480" duration="886000" />
       <workItem from="1533538519034" duration="4408000" />
-      <workItem from="1533546254408" duration="20673000" />
+      <workItem from="1533546254408" duration="20854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210067000" />
+    <option name="totallyTimeSpent" value="210248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -309,7 +309,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/script/RoomLayout.js</url>
-          <line>1379</line>
+          <line>1381</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
@@ -636,8 +636,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/RoomLayout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="2609" column="11" selection-start-line="2609" selection-start-column="11" selection-end-line="2609" selection-end-column="11" />
+        <state relative-caret-position="256">
+          <caret line="2595" column="45" selection-start-line="2595" selection-start-column="45" selection-end-line="2595" selection-end-column="45" />
           <folding>
             <element signature="e#453#526#0" />
             <element signature="e#459#524#0" />
