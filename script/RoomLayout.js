@@ -1042,9 +1042,9 @@ function checkAndValidateID(room){
             validDimension[3] = X;
         }
     }
-    console.log(id);
+    //console.log(id);
     let newId = "roomF"+validDimension[0]+"X"+validDimension[1]+"T"+validDimension[2]+"X"+validDimension[3];
-    console.log(newId)
+    //console.log(newId)
     room.id = newId;
 };
 
@@ -1197,10 +1197,10 @@ function MouseUp(ev) {
         for (let i = 0; i < selectedRoom.children.length; i++) {
             children[i] = selectedRoom.children[i].id;
         }
-        console.log("dimension ", dimension);
-        console.log("new dimension", newDimension);
+        //console.log("dimension ", dimension);
+        //console.log("new dimension", newDimension);
         let newFilterChildren = resizingGrid(x1, y1, x2, y2, children, dimension[1], dimension[0]);
-        console.log("filter children ", newFilterChildren);
+        //console.log("filter children ", newFilterChildren);
         //console.log("offset ",x1,"   " ,y1);
 
         removeRoom(selectedRoom);
@@ -1484,7 +1484,7 @@ function BlockPropreties(room) {
                             selectedRoom = room;
                             checkAndValidateID(selectedRoom);
                             createResizeBoundary(room);
-                            console.log(room);
+                            //console.log(room);
                         }
                     }
                 }
@@ -2380,11 +2380,11 @@ function unavailableArea(cell) {
 }
 
 function nextConf() {
-    console.log(conf, ' ciao ', RoomConf.length);
+    //console.log(conf, ' ciao ', RoomConf.length);
     if (RoomConf.length > conf + 1) {
         saveConf(conf);
         conf++;
-        console.log('next', conf);
+        //console.log('next', conf);
         //console.log(RoomConf);
         if (RoomConf.hasOwnProperty(conf)) {
             restoreRoomConf(conf);
@@ -2397,9 +2397,9 @@ function preConf() {
         //console.log(RoomConf);
         saveConf(conf);
         conf--;
-        console.log('pre', conf);
+        //console.log('pre', conf);
         if (RoomConf.hasOwnProperty(conf)) {
-            console.log("her");
+            //console.log("her");
             restoreRoomConf(conf);
         }
     }
@@ -2407,17 +2407,17 @@ function preConf() {
 
 function newConf() {
 
-    console.log(conf);
+    //console.log(conf);
     saveConf(conf);
     conf = RoomConf.length;
     RoomConf[RoomConf.length] = {};
-    console.log(conf);
-    console.log(RoomConf);
+    //console.log(conf);
+    //console.log(RoomConf);
     RemoveAllInRoom;
 }
 
 function saveConf(number) {
-    console.log('po ', RoomConf);
+    //console.log('po ', RoomConf);
     RoomConf[number].Short = Short.slice();
     RoomConf[number].Long = Long.slice();
 
@@ -2429,7 +2429,7 @@ function restoreRoomConf(number) {
         "Long": RoomConf[number]["Long"],
         "Short": RoomConf[number]["Short"]
     };
-    console.log(room);
+    //console.log(room);
     draw(room);
 }
 
@@ -2489,14 +2489,14 @@ function preRoom() {
 function saveRoom(number) {
     id = "Room" + number;
     savedRoom[id] = [];
-    console.log('ehi');
-    console.log(RoomConf);
-    console.log(RoomConf.length);
+    //console.log('ehi');
+    //console.log(RoomConf);
+    //console.log(RoomConf.length);
     /*let pos = RoomConf.length;
     RoomConf[pos] = {};*/
     RoomConf[conf].Short = Short.slice();
     RoomConf[conf].Long = Long.slice();
-    console.log(savedRoom);
+   // console.log(savedRoom);
     for (let i = 0; i < RoomConf.length; i++) {
         savedRoom[id][i] = {};
         savedRoom[id][i]["Short"] = RoomConf[i].Short.slice();
@@ -2620,7 +2620,7 @@ function drawRoom(number) {
     for (var i = 0; i < house.length; i++) {
         idRooms[idRooms.length] = house[i].id;
     }
-    console.log(idRooms,"  ",idRooms.length);
+    //console.log(idRooms,"  ",idRooms.length);
     for (var j = 1; j < COL; j++) {
         for (var i = 1; i < ROW; i++) {
             //console.log(Grid[j][i]);
@@ -2634,7 +2634,7 @@ function drawRoom(number) {
                 id = Grid[j][i].id;
             }
             if (!idRooms.includes(id)) {
-                console.log("not av");
+                //console.log("not av");
                 //two.remove(Grid[j][i]);
 
                 unavailableArea(Grid[j][i]);
