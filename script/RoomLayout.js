@@ -2571,25 +2571,35 @@ function collectAndSend() {
     saveConf(conf);
     restoreRoomConf(conf);
     let data = {};
+    let idRooms = [];
+    for (var i = 0; i < Room[roomNumber].children.length; i++) {
+        idRooms[idRooms.length] = Room[roomNumber].children[i].id;
+    }
+    let shortID = [];
+    for(let i = 0; i <RoomConf[conf].Short.length;i++){
+        shortID[shortID.length] = RoomConf[conf].Short[i].id;
+
+    }
+    let longID = [];
+    for(let i = 0; i <RoomConf[conf].Long.length;i++){
+        longID[longID.length] = RoomConf[conf].Long[i].id;
+
+    }
+
     data.option = Object.assign({}, RoomOptions);
     data.room = Room[roomNumber].id.slice();
-    data.conf = Object.assign({}, RoomConf[conf]);
-    console.log(data);
-    fetch("https://lsid-server.herokuapp.com/request/s", {
+    data.Short = shortID.slice();
+    data.Long = longID.slice();
+    data.children = idRooms.slice();
+    fetch("http://localhost:3000/request/s", {
 
-        method: "POST",
-
-        mode : 'cors',
-        credentials : 'omit',
+        method: 'POST',
         headers: {
-            Origin: "",
-            Accept: "application/json",
-
-            "Content-Type": "application/json"
-
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
 
-        body: data
+        body: JSON.stringify(data)
 
     }).then((response) => {
 
