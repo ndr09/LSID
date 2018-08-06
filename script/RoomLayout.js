@@ -692,6 +692,7 @@ function NearFreeBlock(X, Y) {
 *
 *
 * */
+
 // pos[0]=frmY; pos[1]=frmX;pos[2]=toY; pos[3]=toX;
 function fromRoomIdToArrayBound(str) {
     var pos = [];
@@ -1022,28 +1023,29 @@ function GCD(a, b) {
 function LCM(a, b) {
     return (a * b) / GCD(a, b);
 }
+
 // pos[0]=frmY; pos[1]=frmX;pos[2]=toY; pos[3]=toX;
-function checkAndValidateID(room){
+function checkAndValidateID(room) {
     let id = room.id;
     let roomDimension = fromRoomIdToArrayBound(id);
-    let validDimension = [27,27,0,0];
+    let validDimension = [27, 27, 0, 0];
     for (let i = 0; i < selectedRoom.children.length; i++) {
         let Y = fromIDtoPosY(selectedRoom.children[i].id);
         let X = fromIDtoPosX(selectedRoom.children[i].id);
 
-        if(Y <validDimension[0]){
+        if (Y < validDimension[0]) {
             validDimension[0] = Y;
-        }else if(Y > validDimension[2]){
+        } else if (Y > validDimension[2]) {
             validDimension[2] = Y;
         }
-        if(X <validDimension[1]){
+        if (X < validDimension[1]) {
             validDimension[1] = X;
-        }else if(X > validDimension[3]){
+        } else if (X > validDimension[3]) {
             validDimension[3] = X;
         }
     }
     //console.log(id);
-    let newId = "roomF"+validDimension[0]+"X"+validDimension[1]+"T"+validDimension[2]+"X"+validDimension[3];
+    let newId = "roomF" + validDimension[0] + "X" + validDimension[1] + "T" + validDimension[2] + "X" + validDimension[3];
     //console.log(newId)
     room.id = newId;
 };
@@ -2496,7 +2498,7 @@ function saveRoom(number) {
     RoomConf[pos] = {};*/
     RoomConf[conf].Short = Short.slice();
     RoomConf[conf].Long = Long.slice();
-   // console.log(savedRoom);
+    // console.log(savedRoom);
     for (let i = 0; i < RoomConf.length; i++) {
         savedRoom[id][i] = {};
         savedRoom[id][i]["Short"] = RoomConf[i].Short.slice();
@@ -2538,8 +2540,8 @@ function restoreRoom(number) {
 }
 
 function nextStep() {
-    if(bound != null){
-       //removeBoundary();
+    if (bound != null) {
+        //removeBoundary();
     }
     for (let i = 0; i < Room.length; i++) {
         if (Room[i].children.length === 0) {
@@ -2576,12 +2578,12 @@ function collectAndSend() {
         idRooms[idRooms.length] = Room[roomNumber].children[i].id;
     }
     let shortID = [];
-    for(let i = 0; i <RoomConf[conf].Short.length;i++){
+    for (let i = 0; i < RoomConf[conf].Short.length; i++) {
         shortID[shortID.length] = RoomConf[conf].Short[i].id;
 
     }
     let longID = [];
-    for(let i = 0; i <RoomConf[conf].Long.length;i++){
+    for (let i = 0; i < RoomConf[conf].Long.length; i++) {
         longID[longID.length] = RoomConf[conf].Long[i].id;
 
     }
@@ -2591,9 +2593,10 @@ function collectAndSend() {
     data.Short = shortID.slice();
     data.Long = longID.slice();
     data.children = idRooms.slice();
-    fetch("https://lsid-server.herokuapp.com/request/s", {
+    fetch("http://localhost:3000/request/s", {
 
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -2602,11 +2605,11 @@ function collectAndSend() {
         body: JSON.stringify(data)
 
     }).then((response) => {
-
-       console.log(response);
-
-    });
-
+        return response.json();
+    })
+        .then(function (json) {
+            console.log(json);
+        });
 
 
 }
@@ -2614,7 +2617,7 @@ function collectAndSend() {
 function drawRoom(number) {
     roomNumber = number;
     let house = Room[roomNumber].children;
-    let fill =Room[roomNumber].fill ;
+    let fill = Room[roomNumber].fill;
     let idRooms = [];
     //console.log("pre   ",idRooms.length);
     for (var i = 0; i < house.length; i++) {
