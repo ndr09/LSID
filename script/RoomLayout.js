@@ -4016,6 +4016,7 @@ function collectAndSend() {
 
     data.Option = Object.assign({}, RoomOptions);
     data.Room = Room[roomNumber].id.slice();
+    data.RoomNumber = roomNumber;
     data.Short = shortID.slice();
     data.Long = longID.slice();
     data.Armchair = armchairID.slice();
