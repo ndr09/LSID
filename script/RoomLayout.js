@@ -3330,7 +3330,6 @@ function MouseUp(ev) {
 
             Room[Room.length] = room;
             two.update();
-
             BlockPropreties(room);
 
         }
@@ -3352,7 +3351,6 @@ function CreateBlock(Xfrom, Yfrom, Xto, Yto) {
     var color = getRandomColor();
     for (var i = Xfrom; i <= Xto; i++)
         for (var j = Yfrom; j <= Yto; j++) {
-
             room.add(Grid[j][i]);
         }
     room.fill = nextFillTexture(Room.length);
