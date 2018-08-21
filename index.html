@@ -24,118 +24,35 @@
 
     <script src="./script/RoomLayout.js"></script>
 </head>
-<body>
+<body id = "body">
 <div class="py-5">
     <div id="main" class="container">
         <div id="lista" class="row">
-            <div class="col-md-3">
-                <div class="list-group" id="menuTable" hidden="true">
-
-                    <a id="TableSel" onclick="stat(2)" class="list-group-item active">Table <img height="28" width="28"
-                                                                                                 class="img-responsive"
-                                                                                                 src="img/small_table_1_1.png"
-                                                                                                 ondrag="dragST(event)"
-                                                                                                 draggable="true"
-                                                                                                 ondragstart="dragStart(event)"></a>
-                    <a id="LTableSel" onclick="stat(3)" class="list-group-item">Long Table <img height="28" width="56"
-                                                                                                class="img-responsive"
-                                                                                                src="img/small_table_2_1.png"
-                                                                                                ondrag="dragLT(event)"
-                                                                                                draggable="true"
-                                                                                                ondragstart="dragStart(event)">
-                    </a>
-                    <a id="DelElement" onclick="stat(1)" class="list-group-item">Delete element</a>
-                </div>
-                <div class="list-goup" id="menuRoom">
-                    <a id="addRoom" onclick="stat(1)" class="list-group-item active">Add Room</a>
-                    <a id="MoveRoom" onclick="stat(2)" class="list-group-item">Move Room</a>
-                    <a id="ResizeRoom" onclick="stat(3)" class="list-group-item">Resize room</a>
-                    <a id="Rubber" onclick="stat(4)" class="list-group-item">Rubber</a>
-                    <a id="RemoveRoom" onclick="stat(5)" class="list-group-item">RemoveRoom</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <button id="nextConf" class="hide" onclick="nextConf()">Next configuration</button>
-
-                <button id="newConf" class="hide" onclick="newConf()">New configuration</button>
-                <button id="preConf" class="hide" onclick="preConf()">Previous configuration</button>
-                <div id="test" contextmenu="false" onmousemove="mouseMove(event)"
-                     onmousedown="MouseDown(event)" onmouseup="MouseUp(event)" ondrop="drop(event)"
-                     ondragover="allowDrop(event)" draggable="false"></div>
+            <div id="leftMenu" class="col-md-3" >
 
             </div>
-            <div class="col-md-3">
-                <div class="list-group" id="options">
-                    <a id="minXdistance" class="list-group-item">Min X distance
-                        <div id="sliderMiXD"></div>
-                    </a>
-                    <a id="maxXdistance" class="list-group-item">Max X distance
-                        <div id="sliderMaXD"></div>
-                    </a>
-                    <a id="minYdistance" class="list-group-item">Min Y distance
-                        <div id="sliderMiYD"></div>
-                    </a>
-                    <a id="maxYdistance" class="list-group-item">Max Y distance
-                        <div id="sliderMaYD"></div>
-                    </a>
-                    <a id="minWallsdistance" class="list-group-item">Min distance from walls
-                        <div id="sliderMiWD"></div>
-                    </a>
-                    <a id="maxWallsdistance" class="list-group-item">Max distance from walls
-                        <div id="sliderMaWD"></div>
-                    </a>
-                    <a id="minBordersdistance" class="list-group-item">Min distance from borders
-                        <div id="sliderMiBD"></div>
-                    </a>
-                    <a id="maxBordersdistance" class="list-group-item">Max distance from borders
-                        <div id="sliderMaBD"></div>
-                    </a>
-                    <a id="numberST" class="list-group-item">Number of square tables
-                        <div id="sliderSTN"></div>
-                    </a>
-                    <a id="numberD" class="list-group-item">Number of desks
-                        <div id="sliderDN"></div>
-                    </a>
-                </div>
+            <div id="config" align="center" class="col-md-6">
+
+                <div id="test" ></div>
+
+            </div>
+            <div id = "rightMenu" class="col-md-3">
+
             </div>
         </div>
     </div>
-    <div class="hide" id="rmenu">
-        <ul>
-            <li>
-                <a onclick="rotate()">rotate</a>
-            </li>
 
-            <li>
-                <a onclick="removeTableOnclick()">delete</a>
-            </li>
-        </ul>
-    </div>
 
-    <button class="btn btn-danger" onclick="RemoveAll()">clean</button>
-    <button class="btn btn-warning" onclick="draw()">draw</button>
-    <button id="build" class="btn btn-primary" onclick="nextStep()">build</button>
-    <button id="next" class="hide" onclick="nextRoom()">next</button>
-    <button id="pre" class="hide" onclick="preRoom()">previous</button>
-    <button id="send" class ="hide" onClick="collectAndSend()">Send request</button>
+
+
+
 
 </div>
 
 
 <script>
 
-    $("#tabs").tabs();
-    $("#sliderMiXD").slider({min: 0, max: 10});
-    $("#sliderMaXD").slider({min: 0, max: 10});
-    $("#sliderMiYD").slider({min: 0, max: 10});
-    $("#sliderMaYD").slider({min: 0, max: 10});
-    $("#sliderMiWD").slider({min: 0, max: 10});
-    $("#sliderMaWD").slider({min: 0, max: 10});
-    $("#sliderMiBD").slider({min: 0, max: 10});
-    $("#sliderMaBD").slider({min: 0, max: 10});
-    $("#sliderSTN").slider({min: 0, max: 10});
-    $("#sliderDN").slider({min: 0, max: 10});
-    main();
+    main("config","leftMenu","rightMenu","config","body");
 
 </script>
 
