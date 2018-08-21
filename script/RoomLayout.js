@@ -365,7 +365,6 @@ function tabel(idTag) {
     wardrobeTexture[1] = new Two.Texture("img/wardrobe_v.png");
 
 
-    //Two.Texture.repeat = true;
     floorTexture[0] = "#FFFF66";
     floorTexture[1] = "#987654";
     floorTexture[2] = "#77DD77";
@@ -536,20 +535,13 @@ function drop(ev) {
     var posX = fromIDtoPosX(str);
     var posY = fromIDtoPosY(str);
     if (str != "boundary" && !isUsed(posX, posY)) {
-        //console.log("target",ev.target.id);
-
-        //console.log(str);
         if (dragType == "short") {
-
-            //console.log("pos",Grid[posX][posY]);
 
             var rect = ShortTable(posX, posY, 1);
             Short[Short.length] = rect;
             stat(2);
             two.update;
             ShortTableProprieties(rect);
-
-            //ev.target.appendChild(document.getElementById("square")); //elimina cio che sposti
 
         } else if (dragType == "long") {
 
@@ -671,7 +663,6 @@ function ShortTableProprieties(re) {
     $(re._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
-                //console.log("Grid ",Grid[posY][posX].id);
                 id = e["currentTarget"]["id"];
                 RemoveShortTable(e["currentTarget"]);
             }
@@ -691,10 +682,8 @@ function RemoveShortTable(target) {
 }
 
 function WhyteCellProprieties(re) {
-    //console.log("roomStatus   wwwwww", RoomStatus);
     $(re._renderer.elem)
         .click(function (e) {
-            //.log("roomStatus   ddd", RoomStatus);
             if (e.button == 0) {
 
                 console.log("something here");
@@ -703,8 +692,6 @@ function WhyteCellProprieties(re) {
                 var posY = fromIDtoPosY(str);
                 lastClicked = str;
                 RoomStatus = RoomStatus * 1;
-                //console.log("!isUSed", !isUsed(posX, posY));
-                //console.log("roomStatus", RoomStatus);
                 if (!isUsed(posX, posY)) {
                     if (RoomStatus === 2 && PhaseStatus === 1) {
                         var rect = ShortTable(posX, posY, 1);
@@ -779,7 +766,6 @@ function ArmchairProprieties(armchair) {
     $(armchair._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
-                console.log(e["currentTarget"]);
                 id = e["currentTarget"]["id"];
                 removeArmchair(e["currentTarget"]);
             }
@@ -807,7 +793,6 @@ function bidetProprieties(bidet) {
     $(bidet._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
-                //console.log("Grid ",Grid[posY][posX].id);
                 id = e["currentTarget"]["id"];
                 removeBidet(e["currentTarget"]);
             }
@@ -831,7 +816,6 @@ function WCProprieties(wc) {
     $(wc._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
-                //console.log("Grid ",Grid[posY][posX].id);
                 id = e["currentTarget"]["id"];
                 removeWC(e["currentTarget"]);
             }
@@ -855,7 +839,6 @@ function sinkProprieties(sink) {
     $(sink._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
-                //console.log("Grid ",Grid[posY][posX].id);
                 id = e["currentTarget"]["id"];
                 removeSink(e["currentTarget"]);
             }
@@ -864,7 +847,6 @@ function sinkProprieties(sink) {
 }
 
 function removeSink(target) {
-    console.log(Sink, " ", target["id"]);
     for (var i = 0; i < Sink.length; i++) {
         if (Sink[i].id == target["id"]) {
             clearBlock(fromIDtoPosX(Sink[i].id), fromIDtoPosY(Sink[i].id));
@@ -901,7 +883,6 @@ function LongTable(posX, posY, ori) {
 
             rect.id = "Long";
             rect.id += "Y" + centerY + "X" + centerX + "D0";
-            //console.log("orientation  ", orientation, "  posX ", centerX, "  posY ", centerY);
             useBlock(posX, posY, 0);
             rect.fill = LTtexture;
             break;
@@ -912,7 +893,6 @@ function LongTable(posX, posY, ori) {
 
             rect.id = "Long";
             rect.id += "Y" + centerY + "X" + centerX + "D1";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 1);
             rect.fill = LTRtexture;
             break;
@@ -923,7 +903,6 @@ function LongTable(posX, posY, ori) {
 
             rect.id = "Long";
             rect.id += "Y" + centerY + "X" + centerX + "D2";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 2);
             rect.fill = LTtexture;
             break;
@@ -934,7 +913,6 @@ function LongTable(posX, posY, ori) {
 
             rect.id = "Long";
             rect.id += "Y" + centerY + "X" + centerX + "D3";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 3);
             rect.fill = LTRtexture;
             break;
@@ -943,7 +921,6 @@ function LongTable(posX, posY, ori) {
 
     }
 
-    //console.log("id in creation   ",rect.id);
     return rect;
 }
 
@@ -1009,7 +986,6 @@ function bath(posX, posY, ori) {
 
             rect.id = "Bath";
             rect.id += "Y" + centerY + "X" + centerX + "D0";
-            //console.log("orientation  ", orientation, "  posX ", centerX, "  posY ", centerY);
             useBlock(posX, posY, 0);
             rect.fill = bathTexture[orientation];
             break;
@@ -1020,10 +996,8 @@ function bath(posX, posY, ori) {
 
             rect.id = "Bath";
             rect.id += "Y" + centerY + "X" + centerX + "D1";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 1);
             rect.fill = bathTexture[orientation];
-            ;
             break;
         case 2:
             centerX -= 1;
@@ -1032,10 +1006,9 @@ function bath(posX, posY, ori) {
 
             rect.id = "Bath";
             rect.id += "Y" + centerY + "X" + centerX + "D2";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 2);
             rect.fill = bathTexture[orientation];
-            ;
+
             break;
         case 3:
             centerX -= 0.5;
@@ -1044,17 +1017,14 @@ function bath(posX, posY, ori) {
 
             rect.id = "Bath";
             rect.id += "Y" + centerY + "X" + centerX + "D3";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useBlock(posX, posY, 3);
             rect.fill = bathTexture[orientation];
-            ;
+
             break;
         default:
 
 
     }
-
-    //console.log("id in creation   ",rect.id);
     return rect;
 }
 
@@ -1136,7 +1106,6 @@ function bed(posX, posY, ori) {
             rect = two.makeRectangle((centerX) * 25, centerY * 25, 50, 50);
             rect.id = "Bed";
             rect.id += "Y" + centerY + "X" + centerX + "D1";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useSquare(posX, posY);
             rect.fill = bedTexture[orientation];
             break;
@@ -1144,7 +1113,6 @@ function bed(posX, posY, ori) {
             rect = two.makeRectangle((centerX) * 25, centerY * 25, 50, 50);
             rect.id = "Bed";
             rect.id += "Y" + centerY + "X" + centerX + "D2";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useSquare(posX, posY);
             rect.fill = bedTexture[orientation];
             break;
@@ -1152,7 +1120,6 @@ function bed(posX, posY, ori) {
             rect = two.makeRectangle((centerX) * 25, centerY * 25, 50, 50);
             rect.id = "Bed";
             rect.id += "Y" + centerY + "X" + centerX + "D3";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useSquare(posX, posY);
             rect.fill = bedTexture[orientation];
             break;
@@ -1160,8 +1127,6 @@ function bed(posX, posY, ori) {
 
 
     }
-
-    //console.log("id in creation   ",rect.id);
     return rect;
 }
 
@@ -1220,7 +1185,6 @@ function wardrobe(posX, posY, ori) {
 
             rect.id = "Wardrobe";
             rect.id += "Y" + centerY + "X" + centerX + "D0";
-            //console.log("orientation  ", orientation, "  posX ", centerX, "  posY ", centerY);
             useLine(posX, posY, 0);
             rect.fill = wardrobeTexture[0];
             break;
@@ -1231,7 +1195,6 @@ function wardrobe(posX, posY, ori) {
 
             rect.id = "Wardrobe";
             rect.id += "Y" + centerY + "X" + centerX + "D1";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useLine(posX, posY, 1);
 
             rect.fill = wardrobeTexture[1];
@@ -1243,7 +1206,6 @@ function wardrobe(posX, posY, ori) {
 
             rect.id = "Wardrobe";
             rect.id += "Y" + centerY + "X" + centerX + "D2";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useLine(posX, posY, 2);
 
             rect.fill = wardrobeTexture[0];
@@ -1255,7 +1217,6 @@ function wardrobe(posX, posY, ori) {
 
             rect.id = "Wardrobe";
             rect.id += "Y" + centerY + "X" + centerX + "D3";
-            //console.log("orientation  ", orientation, "  posX ", posX, "  posY ", posY);
             useLine(posX, posY, 3);
 
             rect.fill = wardrobeTexture[1];
@@ -1264,8 +1225,6 @@ function wardrobe(posX, posY, ori) {
 
 
     }
-
-    //console.log("id in creation   ",rect.id);
     return rect;
 }
 
@@ -1319,8 +1278,6 @@ function menu(elem) {
 
     if (elem._renderer.elem.addEventListener) {
         elem._renderer.elem.addEventListener('contextmenu', function (e) {
-            //console.log("tet ",e.button,"  ", e.which);
-            //console.log(document.getElementById("rmenu"));
             document.getElementById("rmenu").className = "show";
             document.getElementById("rmenu").style.top = mouseY(e) + 'px';
             document.getElementById("rmenu").style.left = mouseX(e) + 'px';
@@ -1332,17 +1289,12 @@ function menu(elem) {
     } else {
 
         document.getElementById("test").attachEvent('oncontextmenu', function () {
-            //$(".test").bind('contextmenu', function() {
-            // elem.on('contextmenu', 'a.test', function() {
-
-
-            //alert("contextmenu"+event);
             document.getElementById("rmenu").className = "show";
             document.getElementById("rmenu").style.top = mouseY(event) + 'px';
             document.getElementById("rmenu").style.left = mouseX(event) + 'px';
 
             window.event.returnValue = false;
-            //}}
+
 
         });
     }
@@ -1356,20 +1308,16 @@ function rotate() {
     let type = typeFromID(RightID);
     if (type === "Long") {
         var dir = RightID[RightID.length - 1] * 1;
-        //console.log("dir ",RightID);
         var rect;
         var pos;
         for (var i = 0; i < Long.length; i++) {
             if (Long[i].id == RightID) {
-                //console.log("try  " +Long[i].id);
                 pos = i;
             }
         }
         var posX = fromIDtoPosX(RightID);
         var posY = fromIDtoPosY(RightID);
-        //console.log(posY,"    ",posX);
         var rect;
-        //console.log(blockStatus[3][1],"    #############   ",blockStatus[2][1]);
         var X = posX;
         var Y = posY;
         switch (dir) {
@@ -1387,16 +1335,11 @@ function rotate() {
 
             default:
         }
-        //console.log("posX ",posX,"  posY ",posY);
-        //console.log("rrotation check  X  ", X, "    Y   ", Y, "   ", dir);
-        //console.log("right Room RoomStatus  ", blockStatus[Y][X + 1]);
         var freeRotationDir = getFreeOrientation(X, Y, (dir + 1) % 4);
 
-        //console.log("rot  ", freeRotationDir);
         if (freeRotationDir != -1) {
             clearBlock(X, Y, dir);
             rect = LongTable(X, Y, freeRotationDir * 1);
-            //console.log("sto per chiamare clear   ", Y, "    ", X," di ", rect.id);
 
 
             target.remove();
@@ -1502,15 +1445,12 @@ function rotate() {
         var pos;
         for (var i = 0; i < Bath.length; i++) {
             if (Bath[i].id == RightID) {
-                //console.log("try  " +Long[i].id);
                 pos = i;
             }
         }
         var posX = fromIDtoPosX(RightID);
         var posY = fromIDtoPosY(RightID);
-        //console.log(posY,"    ",posX);
         var rect;
-        //console.log(blockStatus[3][1],"    #############   ",blockStatus[2][1]);
         var X = posX;
         var Y = posY;
         switch (dir) {
@@ -1528,9 +1468,6 @@ function rotate() {
 
             default:
         }
-        //console.log("posX ",posX,"  posY ",posY);
-        //console.log("rrotation check  X  ", X, "    Y   ", Y, "   ", dir);
-        //console.log("right Room RoomStatus  ", blockStatus[Y][X + 1]);
         var freeRotationDir = getFreeOrientation(X, Y, (dir + 1) % 4);
         console.log("next pos ", freeRotationDir);
         if (freeRotationDir != -1) {
@@ -1568,20 +1505,16 @@ function rotate() {
         bedProprieties(rect);
     } else if ("Wardrobe") {
         var dir = RightID[RightID.length - 1] * 1;
-        //console.log("dir ",RightID);
         var rect;
         var pos;
         for (var i = 0; i < Wardrobe.length; i++) {
             if (Wardrobe[i].id == RightID) {
-                //console.log("try  " +Long[i].id);
                 pos = i;
             }
         }
         var posX = fromIDtoPosX(RightID);
         var posY = fromIDtoPosY(RightID);
-        //console.log(posY,"    ",posX);
         var rect;
-        //console.log(blockStatus[3][1],"    #############   ",blockStatus[2][1]);
         var X = posX;
         var Y = posY;
         switch (dir) {
@@ -1599,16 +1532,11 @@ function rotate() {
                 break;
             default:
         }
-        //console.log("posX ",posX,"  posY ",posY);
-        //console.log("rrotation check  X  ", X, "    Y   ", Y, "   ", dir);
-        //console.log("right Room RoomStatus  ", blockStatus[Y][X + 1]);
         var freeRotationDir = getFreeOrientationLine(X, Y, (dir + 1) % 4);
 
-        //console.log("rot  ", freeRotationDir);
         if (freeRotationDir != -1) {
             clearLine(X, Y, dir);
             rect = wardrobe(X, Y, freeRotationDir * 1);
-            //console.log("sto per chiamare clear   ", Y, "    ", X," di ", rect.id);
 
 
             target.remove();
@@ -2048,7 +1976,6 @@ function fromRoomIdToArrayBound(str) {
     var exitFlag = true;
     var firstXFlag = true;
     for (var index = 0; index < str.length; index++) {
-        //console.log(index);
         if (str[index] == "F") {
             index++;
             if (str[index + 1] != "X")
@@ -2083,11 +2010,9 @@ function fromRoomIdToArrayBound(str) {
 }
 
 function roomProprieties(FC, FR, C, R) {
-    //console.log("    ",FC,"    ",FR,"    ",C,"    ",R);
     for (var j = FC; j < C; j++) {
         for (var i = FR; i < R; i++) {
             var re = Grid[j][i];
-            //console.log("this ", re.id);
             WhyteCellProprieties(re);
         }
     }
@@ -2223,11 +2148,6 @@ function RemoveAll() {
 
 function draw(data) {
     console.log(data);
-    //if (!data) {
-    //  data = obj;
-    //}
-    //console.log(data);
-    ////console.log("Long ", Long.length);
     for (let i = 0; i < data["Long"].length; i++) {
 
         let t = data["Long"][i];
@@ -2250,22 +2170,16 @@ function draw(data) {
                 posY += 0.5;
                 break;
         }
-        //console.log(posX, "   ", posY);
         let rect = LongTable(posX, posY, direction);
         Long[Long.length] = rect;
-        //console.log("Long ", Long.length);
         two.update();
         LongTableProprieties(rect);
 
     }
-    //console.log(Long.length);
-    //console.log("Short ",data["Short"].length);
     for (let i = 0; i < data["Short"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Short"][i];
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
-        //console.log(posX, " ohi  ", posY);
         let rect = ShortTable(posX, posY, 1);
         Short[Short.length] = rect;
         two.update();
@@ -2273,12 +2187,10 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["Armchair"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Armchair"][i];
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
         let ori = orientationFromID(t["id"]);
-        //console.log(posX, " ohi  ", posY);
         let rect = ShortTable(posX, posY, 2);
         if (ori !== 0) {
             rect.fill = armchairTexture[ori];
@@ -2291,12 +2203,10 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["Bidet"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Bidet"][i];
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
         let ori = orientationFromID(t["id"]);
-        //console.log(posX, " ohi  ", posY);
         let rect = ShortTable(posX, posY, 3);
         if (ori !== 0) {
             rect.fill = bidetTexture[ori];
@@ -2309,12 +2219,10 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["WC"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["WC"][i];
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
         let ori = orientationFromID(t["id"]);
-        //console.log(posX, " ohi  ", posY);
         let rect = ShortTable(posX, posY, 4);
         if (ori !== 0) {
             rect.fill = bidetTexture[ori];
@@ -2327,12 +2235,10 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["Sink"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Sink"][i];
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
         let ori = orientationFromID(t["id"]);
-        //console.log(posX, " ohi  ", posY);
         let rect = ShortTable(posX, posY, 5);
         if (ori !== 0) {
             rect.fill = sinkTexture[ori];
@@ -2345,7 +2251,6 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["Bath"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Bath"][i];
 
         let posX = fromIDtoPosX(t["id"]);
@@ -2366,16 +2271,13 @@ function draw(data) {
                 posY += 0.5;
                 break;
         }
-        //console.log(posX, "   ", posY);
         let rect = bath(posX, posY, direction);
         Bath[Bath.length] = rect;
-        //console.log("Long ", Long.length);
         two.update();
         bathProprieties(rect);
 
     }
     for (let i = 0; i < data["Bed"].length; i++) {
-        //console.log("Short ",data["Short"].length);
         let t = data["Bed"][i];
 
         let posX = fromIDtoPosX(t["id"]);
@@ -2396,10 +2298,8 @@ function draw(data) {
                 posY += 0.5;
                 break;
         }
-        //console.log(posX, "   ", posY);
         let rect = bed(posX - 0.5, posY - 0.5, direction);
         Bed[Bed.length] = rect;
-        //console.log("Long ", Long.length);
         two.update();
         bedProprieties(rect);
 
@@ -2426,10 +2326,8 @@ function draw(data) {
                 posY += 1.5;
                 break;
         }
-        //console.log(posX, "   ", posY);
         let rect = wardrobe(posX, posY, direction);
         Wardrobe[Wardrobe.length] = rect;
-        //console.log("Long ", Long.length);
         two.update();
         wardrobeProprieties(rect);
 
@@ -2442,17 +2340,14 @@ function typeFromID(str) {
     var flag = false;
     var type = "";
     for (var index = 0; index < str.length; index++) {
-        //console.log("str[index]  ",str[index]);
         if (str[index] == "Y" || str[index] == "F") {
             flag = true;
-            //console.log("FLAG ",flag);
 
         }
         if (!flag) {
             type += str[index];
         }
     }
-    //console.log(" @@@@@@@@@@@@@@@  ",type);
     return type;
 }
 
@@ -2468,7 +2363,6 @@ function orientationFromID(str) {
             ret += str[index];
         }
     }
-    //console.log(ret);
     return ret * 1;
 
 }
@@ -2477,7 +2371,6 @@ function fromIDtoPosY(str) {
     var flag = false;
     var ret = "";
     for (var index = 0; index < str.length; index++) {
-        //console.log("ret    ",ret);
         if (str[index] == "Y") {
             flag = true;
             index++;
@@ -2489,7 +2382,6 @@ function fromIDtoPosY(str) {
             ret += str[index];
         }
     }
-    //console.log(ret);
     return ret * 1;
 }
 
@@ -2508,12 +2400,10 @@ function fromIDtoPosX(str) {
             ret += str[index];
         }
     }
-    //console.log(ret);
     return ret * 1;
 }
 
 function variation(type) {
-    //console.log("type ", type, "  RoomStatus " + RoomStatus);
     if (PhaseStatus == 0) {
         if (bound != null) {
             removeBoundary();
@@ -2625,7 +2515,6 @@ function stat(type) {
 
     variation(type);
     RoomStatus = type;
-    //console.log(RoomStatus);
 
 }
 
@@ -2689,14 +2578,12 @@ function checkAndValidateID(room) {
             validDimension[3] = X;
         }
     }
-    //console.log(id);
     room.id = "roomF" + validDimension[0] + "X" + validDimension[1] + "T" + validDimension[2] + "X" + validDimension[3];
-    //console.log(newId)
+
 }
 
 /* resize aux function */
 function resizingPopolater(resizeGrid, frmX, frmY, toX, toY) {
-    //console.log("frmY ",frmY," toY ",toY);
     for (let j = frmY; j < toY; j++)
         for (let i = frmX; i < toX; i++) {
             resizeGrid[j][i] = true;
@@ -2706,7 +2593,6 @@ function resizingPopolater(resizeGrid, frmX, frmY, toX, toY) {
 function resizingChecker(resizeGrid, frmX, frmY, toX, toY) {
     let count = 0;
     let res;
-    //console.log("frmY ",frmY," toY ",toY);
     for (let j = frmY; j < toY; j++)
         for (let i = frmX; i < toX; i++) {
             if (resizeGrid[j][i] === true) {
@@ -2731,47 +2617,30 @@ function steps(a, b) {
 
 function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
     let width = x1 * x2;
-    //console.log(y1,y2);
     let height = y1 * y2;
 
     let resGrid = [];
-    //console.log("max j ",height);
     for (let j = 0; j < height; j++) {
         resGrid[j] = [];
         for (let i = 0; i < width; i++) {
 
             resGrid[j][i] = false;
-            //console.log(j," °°° ",i,"   ",resGrid[j][i]);
-            //console.log(resGrid);
         }
     }
-    //console.log("first");
-
-    //piu efficente se controllo solo i figli
-    //console.log("y ", y1, "   ", y2);
-    //console.log("x ", x1, "   ", x2);
     for (let j = 0; j < y1; j++) {
         for (let i = 0; i < x1; i++) {
             let id = "Y" + (j + Yoffset) + "X" + (i + Xoffset);
-            //console.log(j, "   ", i);
-            //console.log(id, "   ", children);
+
             if (children.indexOf(id) > -1) {
                 let frmX = i * steps(x1, x2);
                 let frmY = j * steps(y1, y2);
-                //console.log(i, " °°° ", j);
-                //console.log(frmX, " -------- ", frmY, " ## ", frmX + steps(x1, x2), " -------- ", frmY + steps(y1, y2));
                 if (!(frmY + steps(y1, y2) > height) && !(frmX + steps(x1, x2) > width)) {
                     resizingPopolater(resGrid, frmX, frmY, frmX + steps(x1, x2), frmY + steps(y1, y2));
                 } else {
-                    //console.log("blocke by check",frmY + steps(y1, y2) ,"   ", height, "  ", frmX + steps(x1, x2) ,"  ", width );
                 }
             }
         }
     }
-    //console.log("==============================");
-    ////console.log(y2," ####  ",x2);
-    ////console.log(resGrid);
-    //cercare di migliorare efficenza
     let resizedChildren = [];
     for (let j = 0; j < y2; j++) {
         for (let i = 0; i < x2; i++) {
@@ -2781,18 +2650,11 @@ function resizingGrid(x1, y1, x2, y2, children, Xoffset, Yoffset) {
             if ((!(frmX + steps(x2, x1) > width)) && (!(frmY + steps(y2, y1) > height))) {
                 if (resizingChecker(resGrid, frmX, frmY, frmX + steps(x2, x1), frmY + steps(y2, y1))) {
                     let id = "Y" + j + "X" + i;
-                    //console.log("new child ", id);
                     resizedChildren[resizedChildren.length] = id;
                 }
-            } else {
-                //console.log(i, " °°° ", j);
-                //console.log("blocked by check y",frmY + steps(y2, y1) ,"   ", height,"  " ,(!(frmX + steps(y2, y1) > height))," x ", frmX + steps(x2, x1) ,"  ", width, "  ",(!(frmY + steps(x2, x1) > width)) );
             }
-
         }
     }
-    ////console.log("==============================");
-    ////console.log(resizedChildren);
     resGrid = [];
     return resizedChildren;
 
@@ -2812,7 +2674,6 @@ function MouseDown(ev) {
             if (RoomStatus === 2 || RoomStatus === 3) {
                 lastY = mouseY(ev);
                 lastX = mouseX(ev);
-                //console.log(ev);
             } else if (RoomStatus === 1) {
                 let id = ev.target.id;
                 let X = fromIDtoPosX(id);
@@ -2820,10 +2681,6 @@ function MouseDown(ev) {
                 lastY = mouseY(ev);
                 lastX = mouseX(ev);
                 tempRoom = createTempRoom(X, Y, X, Y);
-                /*tempRoom = two.makeRectangle(X * 25, Y * 25, 25, 25);
-                tempRoom.id = "roomF";
-                tempRoom.id += Y + "X" + X + "T" + Y + "X" + X;
-                tempRoom.fill = "rgba(0, 255, 0, 0.3)";*/
                 flag = true;
 
             }
@@ -2835,15 +2692,11 @@ function MouseDown(ev) {
                 frm = "Room";
             }
             lastSquare = frm;
-            //temp = new
         }
     }
 }
 
 function mouseMove(ev) {
-    //if (mouseDownFlag)
-    //console.log(ev);
-
     let area;
     let fill;
     if (RoomStatus === 1 && PhaseStatus === 0 && mouseDownFlag && frm !== "Room") {
@@ -2852,45 +2705,16 @@ function mouseMove(ev) {
         let valid = ((Math.abs(lastX - X) > 25) || (Math.abs(lastY - Y) > 25)) && (ev.target.id && ev.target.id !== "test");
 
         if (valid) {
-            console.log(ev.target.id);
-
-            // console.log(ev.target.id, " ", frm);
 
             let Yfrom = fromIDtoPosY(frm);
             let Xfrom = fromIDtoPosX(frm);
             let Yto;
             let Xto;
-            /*if(ev.target.id === tempRoom.id){
-                let dim = fromRoomIdToArrayBound(tempRoom.id);
 
-                    if ((X) < (lastX+25)) {
-                        console.log((X-lastX)," 0 ",(Math.floor((X-lastX)/25)));
-                        Xto = dim[3] - (Math.floor((lastX-X)/25));
-                    } else {
-                        console.log("1 ",(Math.floor((X-lastX)/25)));
-
-                        Xto = dim[1] + (Math.floor((X-lastX)/25));
-
-                    }
-                console.log(Y,"  ",lastY,"  ",(Y+25) < lastY);
-                    if ((Y) < (lastY+25)) {
-                        console.log("2 ",(Math.floor((Y-lastY)/25)));
-
-                        Yto = dim[2] - (Math.floor((lastY-Y)/25));
-                    } else {
-                        console.log("3 ",(Math.floor((Y-lastY)/25)));
-
-                        Yto = dim[0] + (Math.floor((Y-lastY)/25));
-
-
-                    }
-
-            }else{*/
             Yto = fromIDtoPosY(ev.target.id);
             Xto = fromIDtoPosX(ev.target.id);
             lastX = X;
             lastY = Y;
-            //N
             if (tempRoom != null) {
                 removeTempRoom();
             }
@@ -2906,122 +2730,45 @@ function mouseMove(ev) {
             }
             let centerX = ((Xto - Xfrom) / 2) + Xfrom;
             let centerY = ((Yto - Yfrom) / 2) + Yfrom;
-            //console.log(Xto , " X ", Xfrom);
-            //console.log(Yto , " Y ", Yfrom);
-            //console.log((Xto - Xfrom + 1), " all ", (Yto - Yfrom + 1));
+
             tempRoom = createTempRoom(Xfrom, Yfrom, Xto, Yto);
-            /*tempRoom = tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (Xto - Xfrom + 1) * 25, (Yto - Yfrom + 1) * 25);
-            tempRoom.id = "roomF";
-            tempRoom.id += Yfrom + "X" + Xfrom + "T" + Yto + "X" + Xto;
-            // console.log("target ",tempRoom.id);
-            tempRoom.fill = "rgba(0, 255, 0, 0.3)";*/
         }
-        /* if (((X > (lastX + 25)) && flag)) { //N
-             console.log(X > lastX + 25," ",lastX, " before ", flag);
 
-             lastX = X;
-
-             let dimension;
-             if (tempRoom != null) {
-                 dimension = fromRoomIdToArrayBound(tempRoom.id);
-                 //removeRoom(tempRoom);
-                 tempRoom._renderer.elem.remove();
-                 tempRoom = null;
-                 two.update();
-             }
-             if (dimension[3] + 2 > ROW) {
-
-                 dimension[3]--;
-             }
-             let centerX = ((dimension[3] + 1 - dimension[1]) / 2) + dimension[1];
-             let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-             console.log(dimension);
-             tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 1) * 25);
-             tempRoom.id = "roomF";
-             tempRoom.id += dimension[0] + "X" + dimension[1] + "T" + dimension[2] + "X" + (dimension[3] + 1);
-
-             tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-             // Room[Room.length] = tempRoom;
-         } else if (X < lastX - 25 && flag) {
-             //console.log(X, " here ", lastX);
-             lastX = X;
-             let dimension;
-             let notZeroFlag = false;
-             if (tempRoom != null) {
-                 dimension = fromRoomIdToArrayBound(tempRoom.id);
-
-                 //removeRoom(tempRoom);
-                 tempRoom._renderer.elem.remove();
-                 tempRoom = null;
-                 two.update();
-             }
-             if (dimension[1] - 1 < 0) {
-                 console.log('ciao');
-                 dimension[1]++;
-             }
-             if (dimension[1] - dimension[3] === 0) {
-                 console.log('ciao');
-                 notZeroFlag = true;
-             }
-             let centerX = ((dimension[3] - 1 - dimension[1]) / 2) + dimension[1];
-             let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-             if(notZeroFlag) {
-                 tempRoom = two.makeRectangle((centerX) * 25, centerY * 25, (2) * 25, (dimension[2] - dimension[0] + 1) * 25);
-                 tempRoom.id = "roomF";
-                 tempRoom.id += dimension[0] + "X" + (dimension[1] - 2) + "T" + dimension[2] + "X" + (dimension[3]-2);
-                 notZeroFlag = false;
-             }else{
-                 tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[1] - dimension[3]-1) * 25, (dimension[2] - dimension[0]+1) * 25);
-                 tempRoom.id = "roomF";
-                 tempRoom.id += dimension[0] + "X" + dimension[1] + "T" + dimension[2] + "X" + (dimension[3] - 1);
-
-             }
-
-
-             tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-         }*/
     }
     if (RoomStatus === 2 && PhaseStatus === 0 && mouseDownFlag) {
 
         for (let i = 0; i < Room.length; i++) {
             if (Room[i].id === ev["target"]["parentNode"]["id"]) {
                 area = Room[i];
-                //console.log("######## ", area.children.length);
             }
         }
 
         let Y = mouseY(ev);
         let X = mouseX(ev);
-        //console.log("___________________ ");
         if (area != null) {
             fill = area.fill;
             let children = [];
             for (let i = 0; i < area.children.length; i++) {
                 children[i] = area.children[i].id;
             }
-            //console.log("children array ",children.length);
             let flag = true;
             if (X > lastX + 25 && Y < lastY - 25 && flag) { //NE
                 lastX = X;
-                ///console.log("NE");
                 flag = false;
                 selectedRoom = moveNE(area, fill, children);
 
             } else if (X < lastX - 25 && Y < lastY - 25 && flag) { //NO
                 lastX = X;
-                //console.log("NO");
                 flag = false;
                 selectedRoom = moveNO(area, fill, children);
             }
             if (Y > lastY + 25 && X > lastX + 25 && flag) { //SE
                 lastY = Y;
-                //console.log("SE");
                 flag = false;
                 selectedRoom = moveSE(area, fill, children);
 
             } else if (Y > lastY + 25 && X < lastX - 25 && flag) { //SO
                 lastY = Y;
-                //console.log("SO");
                 flag = false;
                 selectedRoom = moveSO(area, fill, children);
             }
@@ -3029,25 +2776,21 @@ function mouseMove(ev) {
 
             if (X > lastX + 25 && flag) {
                 lastX = X;
-                //console.log("E");
                 flag = false;
                 selectedRoom = moveRight(area, fill, children);
 
             } else if (X < lastX - 25 && flag) {
                 lastX = X;
-                ////console.log("O");
                 flag = false;
                 selectedRoom = moveLeft(area, fill, children);
             }
             if (Y > lastY + 25 && flag) {
                 lastY = Y;
-                //console.log("S");
                 flag = false;
                 selectedRoom = moveDown(area, fill, children);
 
             } else if (Y < lastY - 25 && flag) {
                 lastY = Y;
-                //console.log("N");
                 flag = false;
                 selectedRoom = moveUp(area, fill, children);
             }
@@ -3055,12 +2798,9 @@ function mouseMove(ev) {
     }
     if (RoomStatus === 3 && PhaseStatus === 0 && resizeFlag) {
         area = selectedRoom;
-        //console.log('   erhi', area);
         let Y = mouseY(ev);
         let X = mouseX(ev);
-        //console.log("___________________ ");
         if (area != null) {
-            //console.log("quii entra");
             fill = area.fill;
             let children = [];
 
@@ -3069,22 +2809,17 @@ function mouseMove(ev) {
             }
 
             let flag = true;
-            //console.log("resizing", resizingDirection);
             if (resizingDirection === "RC") {
                 if (X > lastX + 25 && flag) { //N
                     lastX = X;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
-
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3095,38 +2830,32 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] + 1 - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 1) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += dimension[0] + "X" + dimension[1] + "T" + dimension[2] + "X" + (dimension[3] + 1);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (X < lastX - 25 && flag) {
                     lastX = X;
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
                     }
                     if (dimension[3] - 2 < dimension[1]) {
-                        //console.log('ciao');
                         dimension[3]++;
                     }
                     let centerX = ((dimension[3] - 1 - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-                    //console.log(centerX, " the  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[1] - dimension[3]) * 25, (dimension[2] - dimension[0] + 1) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += dimension[0] + "X" + dimension[1] + "T" + dimension[2] + "X" + (dimension[3] - 1);
@@ -3139,17 +2868,13 @@ function mouseMove(ev) {
                 if (X > lastX + 25 && flag) { //N
                     lastX = X;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
-
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3157,30 +2882,25 @@ function mouseMove(ev) {
                     if (dimension[1] + 1 > dimension[3]) {
                         dimension[1]--;
                     }
-                    //console.log("d ", dimension);
                     let centerX = ((dimension[3] - (dimension[1] + 1)) / 2) + (dimension[1] + 1);
                     let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0] + 1) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += dimension[0] + "X" + (dimension[1] + 1) + "T" + dimension[2] + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (X < lastX - 25 && flag) {
                     lastX = X;
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3190,8 +2910,6 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] - (dimension[1] - 1)) / 2) + (dimension[1] - 1);
                     let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 1) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += dimension[0] + "X" + (dimension[1] - 1) + "T" + dimension[2] + "X" + (dimension[3]);
@@ -3204,17 +2922,14 @@ function mouseMove(ev) {
                 if (Y > lastY + 25 && flag) { //N
                     lastY = Y;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3222,30 +2937,24 @@ function mouseMove(ev) {
                     if (dimension[0] + 1 > dimension[2]) {
                         dimension[0]--;
                     }
-                    //console.log("d ", dimension);
                     let centerX = ((dimension[3] - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - (dimension[0] + 1)) / 2) + (dimension[0] + 1);
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 1) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] + 1) + "X" + (dimension[1]) + "T" + dimension[2] + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y < lastY - 25 && flag) {
                     lastY = Y;
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
-
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3255,8 +2964,6 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - (dimension[0] - 1)) / 2) + (dimension[0] - 1);
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 1) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] - 1) + "X" + (dimension[1]) + "T" + dimension[2] + "X" + (dimension[3]);
@@ -3269,17 +2976,14 @@ function mouseMove(ev) {
                 if (Y > lastY + 25 && flag) { //N
                     lastY = Y;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3287,30 +2991,25 @@ function mouseMove(ev) {
                     if (dimension[2] + 1 > COL) {
                         dimension[2]--;
                     }
-                    // //console.log("d ", dimension);
                     let centerX = ((dimension[3] - dimension[1]) / 2) + dimension[1];
                     let centerY = (((dimension[2] + 1) - (dimension[0])) / 2) + (dimension[0]);
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 1) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1]) + "T" + (dimension[2] + 1) + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y < lastY - 25 && flag) {
                     lastY = Y;
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3320,8 +3019,6 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - 1 - (dimension[0])) / 2) + (dimension[0]);
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 1) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1]) + "T" + (dimension[2] - 1) + "X" + (dimension[3]);
@@ -3335,17 +3032,14 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3356,16 +3050,13 @@ function mouseMove(ev) {
                     if (dimension[3] + 1 > ROW) {
                         dimension[3]--;
                     }
-                    // //console.log("d ", dimension);
                     let centerX = (((dimension[3] + 1) - dimension[1]) / 2) + dimension[1];
                     let centerY = (((dimension[2] + 1) - dimension[0]) / 2) + dimension[0];
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1]) + "T" + (dimension[2] + 1) + "X" + (dimension[3] + 1);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y < lastY - 25 && X < lastX - 25 && flag) {
                     lastY = Y;
@@ -3373,14 +3064,12 @@ function mouseMove(ev) {
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3394,8 +3083,6 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] - 1 - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - 1 - dimension[0]) / 2) + dimension[0];
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1]) + "T" + (dimension[2] - 1) + "X" + (dimension[3] - 1);
@@ -3409,17 +3096,14 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                    //console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3430,16 +3114,13 @@ function mouseMove(ev) {
                     if (dimension[3] + 1 > ROW) {
                         dimension[3]--;
                     }
-                    // //console.log("d ", dimension);
                     let centerX = (((dimension[3] + 1) - dimension[1]) / 2) + dimension[1];
                     let centerY = ((dimension[2] - (dimension[0] - 1)) / 2) + (dimension[0] - 1);
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] - 1) + "X" + (dimension[1]) + "T" + (dimension[2]) + "X" + (dimension[3] + 1);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y > lastY + 25 && X < lastX - 25 && flag) {
                     lastY = Y;
@@ -3447,14 +3128,12 @@ function mouseMove(ev) {
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3468,8 +3147,6 @@ function mouseMove(ev) {
                     }
                     let centerX = (((dimension[3] - 1) - dimension[1]) / 2) + dimension[1];
                     let centerY = (((dimension[2]) - (dimension[0] + 1)) / 2) + (dimension[0] + 1);
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] + 1) + "X" + (dimension[1]) + "T" + (dimension[2]) + "X" + (dimension[3] - 1);
@@ -3484,17 +3161,13 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                    ////console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
-
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3505,50 +3178,40 @@ function mouseMove(ev) {
                     if (dimension[1] - 1 < 0) {
                         dimension[1]++;
                     }
-                    // //console.log("d ", dimension);
                     let centerX = (((dimension[3]) - (dimension[1] - 1)) / 2) + (dimension[1] - 1);
                     let centerY = (((dimension[2] + 1) - dimension[0]) / 2) + dimension[0];
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1] - 1) + "T" + (dimension[2] + 1) + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y < lastY - 25 && X > lastX + 25 && flag) {
-                    //console.log(resizingDirection,"  ",Y,"   ",lastY,"   ",X,"   ",lastX);
                     lastY = Y;
                     lastX = X;
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
                     }
                     if (dimension[2] - 1 < dimension[0]) {
-                        ////console.log("Y secure");
                         dimension[2]++;
 
                     }
                     if (dimension[3] - 1 < dimension[1]) {
-                        // //console.log("X secure");
 
                         dimension[3]++;
                     }
                     let centerX = (((dimension[3]) - (dimension[1] + 1)) / 2) + (dimension[1] + 1);
                     let centerY = (((dimension[2] - 1) - (dimension[0])) / 2) + (dimension[0]);
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0]) + "X" + (dimension[1] + 1) + "T" + (dimension[2] - 1) + "X" + (dimension[3]);
@@ -3562,17 +3225,14 @@ function mouseMove(ev) {
                     lastY = Y;
                     lastX = X;
                     flag = false;
-                    ////console.log((bound == null), "  ", (tempRoom == null));
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3583,16 +3243,13 @@ function mouseMove(ev) {
                     if (dimension[1] - 1 < 0) {
                         dimension[1]++;
                     }
-                    // //console.log("d ", dimension);
                     let centerX = (((dimension[3]) - (dimension[1] - 1)) / 2) + (dimension[1] - 1);
                     let centerY = ((dimension[2] - (dimension[0] - 1)) / 2) + (dimension[0] - 1);
-                    //console.log(centerX, "   ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 2) * 25, (dimension[2] - dimension[0] + 2) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] - 1) + "X" + (dimension[1] - 1) + "T" + (dimension[2]) + "X" + (dimension[3]);
 
                     tempRoom.fill = "rgba(0, 255, 0, 0.3)";
-                    // Room[Room.length] = tempRoom;
                     createResizeBoundary(tempRoom);
                 } else if (Y > lastY + 25 && X > lastX + 25 && flag) {
                     lastY = Y;
@@ -3600,14 +3257,12 @@ function mouseMove(ev) {
                     flag = false;
                     if (bound != null) {
                         removeBoundary(bound);
-                        //console.log("delete bound");
                     }
 
                     let dimension = fromRoomIdToArrayBound(area.id);
                     if (tempRoom != null) {
                         dimension = fromRoomIdToArrayBound(tempRoom.id);
 
-                        //removeRoom(tempRoom);
                         tempRoom._renderer.elem.remove();
                         tempRoom = null;
                         two.update();
@@ -3621,8 +3276,6 @@ function mouseMove(ev) {
                     }
                     let centerX = ((dimension[3] - (dimension[1] + 1)) / 2) + (dimension[1] + 1);
                     let centerY = ((dimension[2] - (dimension[0] + 1)) / 2) + (dimension[0] + 1);
-                    //console.log(dimension);
-                    //console.log(centerX, " center  ", centerY);
                     tempRoom = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1]) * 25, (dimension[2] - dimension[0]) * 25);
                     tempRoom.id = "roomF";
                     tempRoom.id += (dimension[0] + 1) + "X" + (dimension[1] + 1) + "T" + (dimension[2]) + "X" + (dimension[3]);
@@ -3636,11 +3289,9 @@ function mouseMove(ev) {
 }
 
 function MouseUp(ev) {
-    console.log("ehu");
     ev.preventDefault();
     mouseDownFlag = false;
     document.getElementById("main").style.cursor = "auto";
-    //console.log('remove', bound, '   ', resizeFlag);
     if (RoomStatus === 3 && PhaseStatus === 0 && resizeFlag) {
         let dimension = fromRoomIdToArrayBound(selectedRoom.id);
         let newDimension = fromRoomIdToArrayBound(tempRoom.id);
@@ -3657,47 +3308,32 @@ function MouseUp(ev) {
         let children = [];
         for (let i = 0; i < selectedRoom.children.length; i++) {
             children[i] = selectedRoom.children[i].id;
+            let newFilterChildren = resizingGrid(x1, y1, x2, y2, children, dimension[1], dimension[0]);
+
+            removeRoom(selectedRoom);
+            let room = CreateBlockFiltered(newDimension[1], newDimension[0], newDimension[3], newDimension[2], newFilterChildren, newDimension[1], newDimension[0]);
+            room.fill = fill;
+            room.stroke = fill;
+            Room[Room.length] = room;
+            resizeFlag = false;
+            two.update();
+            BlockPropreties(room);
+        }}else if (bound != null && resizeFlag) {
+            removeBoundary();
+            createResizeBoundary(selectedRoom);
+            resizeFlag = false;
         }
-        //console.log("dimension ", dimension);
-        //console.log("new dimension", newDimension);
-        let newFilterChildren = resizingGrid(x1, y1, x2, y2, children, dimension[1], dimension[0]);
-        //console.log("filter children ", newFilterChildren);
-        //console.log("offset ",x1,"   " ,y1);
+        if (RoomStatus === 1 && PhaseStatus === 0 && frm !== "Room" && tempRoom !== null) {
+            let dimension = fromRoomIdToArrayBound(tempRoom.id);
+            removeTempRoom();
+            let room = CreateBlock(dimension[1], dimension[0], dimension[3], dimension[2]);
 
-        removeRoom(selectedRoom);
-        //console.log("new position ",position[1],"  " , position[0],"  " , position[3] + 1,"  " , position[2]);
-        //console.log("=================");
-        let room = CreateBlockFiltered(newDimension[1], newDimension[0], newDimension[3], newDimension[2], newFilterChildren, newDimension[1], newDimension[0]);
-        room.fill = fill;
-        room.stroke = fill;
-        Room[Room.length] = room;
-        //console.log("new room",room);
-        resizeFlag = false;
-        two.update();
-        BlockPropreties(room);
-    } else if (bound != null && resizeFlag) {
-        //console.log("second if");
-        removeBoundary();
-        createResizeBoundary(selectedRoom);
-        resizeFlag = false;
-    }
-    if (RoomStatus === 1 && PhaseStatus === 0 && frm !== "Room" && tempRoom !== null) {
-        //console.log("third if");
+            Room[Room.length] = room;
+            two.update();
 
-        /*lastX = 0;
-        lastY = 0;*/
+            BlockPropreties(room);
 
-        let dimension = fromRoomIdToArrayBound(tempRoom.id);
-        console.log(dimension);
-        removeTempRoom();
-        let room = CreateBlock(dimension[1], dimension[0], dimension[3], dimension[2]);
-
-        Room[Room.length] = room;
-        two.update();
-
-        BlockPropreties(room);
-
-    }
+        }
 }
 
 function CreateBlock(Xfrom, Yfrom, Xto, Yto) {
@@ -3716,23 +3352,13 @@ function CreateBlock(Xfrom, Yfrom, Xto, Yto) {
     var color = getRandomColor();
     for (var i = Xfrom; i <= Xto; i++)
         for (var j = Yfrom; j <= Yto; j++) {
-            //Grid[j][i].fill = color;
-            //Grid[j][i].fill = floorTexture[0];
-            //Grid[j][i].linewidth = 0;
-            //Grid[j][i].stroke = TRANSPARENT;
 
-            //useBlock(i, j);
-            //console.log(blockStatus[j][i], "  ", j, "  ", i);
             room.add(Grid[j][i]);
         }
-    //room.fill = color;
     room.fill = nextFillTexture(Room.length);
-    //room.noStroke();
     room.stroke = nextFillTexture(Room.length);
     room.id = "roomF"
     room.id += Yfrom + "X" + Xfrom + "T" + Yto + "X" + Xto;
-
-    //console.log(room);
     return room;
 
 }
@@ -3756,38 +3382,22 @@ function CreateBlockFiltered(Xfrom, Yfrom, Xto, Yto, filter, Xoffset, Yoffset) {
     }
     let countV = 0;
     let countW = 0;
-    //console.log(Yfrom, "  ",Xfrom , "  ",Yto , "   ",Xto );
     var room = two.makeGroup();
     var color = getRandomColor();
-    //console.log("Xoff ",Xoffset," Yoff ",Yoffset);
-    //console.log(filter);
     for (var j = Yfrom; j <= Yto; j++)
         for (var i = Xfrom; i <= Xto; i++) {
             let position = "Y" + (j - Yoffset) + "X" + (i - Xoffset);
-
-            //console.log("position ",position, "   ",filter);
-            //console.log(filter.indexOf(position));
             if (filter.indexOf(position) > -1) {
                 Grid[j][i].fill = color;
                 countV++;
                 Grid[j][i].linewidth = 1;
                 Grid[j][i].stroke = color;
                 room.add(Grid[j][i]);
-            } else {
-                //console.log("###############");
-                /*countW++;
-                Grid[j][i].fill = WHYTE;
-                Grid[j][i].linewidth = 1;
-                Grid[j][i].stroke = BLACK;*/
             }
         }
-    //console.log("room ",countV," whyte ",countW," total ", countV+countW);
-    //console.log(room.children);
     room.fill = color;
     room.id = "roomF";
     room.id += Yfrom + "X" + Xfrom + "T" + Yto + "X" + Xto;
-
-    //console.log(room);
     return room;
 
 }
@@ -3795,10 +3405,8 @@ function CreateBlockFiltered(Xfrom, Yfrom, Xto, Yto, filter, Xoffset, Yoffset) {
 function createResizeBoundary(room) {
 
     let dimension = fromRoomIdToArrayBound(room.id);
-    //console.log("d ", dimension);
     let centerX = ((dimension[3] - dimension[1]) / 2) + dimension[1];
     let centerY = ((dimension[2] - dimension[0]) / 2) + dimension[0];
-    //console.log(centerX, "   ", centerY);
     let g = two.makeGroup();
     let boundary = two.makeRectangle(centerX * 25, centerY * 25, (dimension[3] - dimension[1] + 1) * 25, (dimension[2] - dimension[0] + 1) * 25);
     boundary.id = "boundary";
@@ -3829,7 +3437,6 @@ function createResizeBoundary(room) {
     g.add(RD, RC, RU, CD, CU, LD, LC, LU);
     g.id = "B" + room.id;
     bound = g;
-    //console.log(" not null of course ",bound);
     two.update();
     boundaryProprieties(g);
 }
@@ -3879,14 +3486,10 @@ function removeBoundary() {
 }
 
 function boundaryProprieties(boundary) {
-    //console.log(boundary);
-    /*$(boundary._renderer.elem) .click(function (e) {
-        boundary.remove();
-    });*/
+
     $(boundary.children.ids["boundary"]._renderer.elem)
         .click(function (e) {
 
-                //removeBoundary(boundary);
             }
         );
     $(boundary.children.ids["RC"]._renderer.elem)
@@ -3895,7 +3498,6 @@ function boundaryProprieties(boundary) {
             resizeFlag = true;
             resizingDirection = "RC";
             document.getElementById("main").style.cursor = "w-resize";
-            //console.log("how ", e);
         });
     $(boundary.children.ids["RD"]._renderer.elem)
         .mousedown(function (e) {
@@ -3931,7 +3533,6 @@ function boundaryProprieties(boundary) {
         resizeFlag = true;
         mouseDownFlag = true;
         resizingDirection = "RD";
-        //console.log('here');
         document.getElementById("main").style.cursor = "se-resize";
     });
     $(boundary.children.ids["RU"]._renderer.elem).mousedown(function (e) {
@@ -3944,7 +3545,6 @@ function boundaryProprieties(boundary) {
         resizeFlag = true;
         mouseDownFlag = true;
         resizingDirection = "LD";
-        //console.log('here');
         document.getElementById("main").style.cursor = "sw-resize";
     });
     $(boundary.children.ids["LU"]._renderer.elem).mousedown(function (e) {
@@ -3958,9 +3558,6 @@ function boundaryProprieties(boundary) {
 function BlockPropreties(room) {
     $(room._renderer.elem)
         .click(function (e) {
-            //.log("  d ", lastClicked);
-            //console.log(e);
-
             if (PhaseStatus === 0) {
                 if (bound != null && room.id !== selectedRoom.id) {
                     removeBoundary();
@@ -3979,7 +3576,6 @@ function BlockPropreties(room) {
                             selectedRoom = room;
                             checkAndValidateID(selectedRoom);
                             createResizeBoundary(room);
-                            //console.log(room);
                         }
                     }
                 }
@@ -3999,14 +3595,8 @@ function BlockPropreties(room) {
 
 function moveRight(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(group,fill,children.length);
-    //console.log(posArray[1] + 1);
-    //console.log(posArray[1] + 1 < ROW);
+
     if (posArray[3] + 1 < ROW) {
-        //console.log(posArray);
-        /*console.log("R");
-       //console.log(group.children.length);
-       //console.log(children.length);*/
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1] + 1, posArray[0], posArray[3] + 1, posArray[2], children, 1, 0);
         Room[Room.length] = room;
@@ -4022,10 +3612,8 @@ function moveRight(group, fill, children) {
 
 function moveLeft(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] - 1);
-    //console.log(posArray[1] - 1 >= 1);
+
     if (posArray[1] - 1 > 0) {
-        //console.log(posArray);
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1] - 1, posArray[0], posArray[3] - 1, posArray[2], children, -1, 0);
         Room[Room.length] = room;
@@ -4042,10 +3630,8 @@ function moveLeft(group, fill, children) {
 function moveUp(group, fill, children) {
 
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] + 1);
-    //console.log(posArray[1] + 1 < ROW);
+
     if (posArray[0] - 1 > 0) {
-        //console.log(posArray);
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1], posArray[0] - 1, posArray[3], posArray[2] - 1, children, 0, -1);
         Room[Room.length] = room;
@@ -4061,13 +3647,8 @@ function moveUp(group, fill, children) {
 
 function moveDown(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] - 1);
-    //console.log(posArray[1] - 1 >= 1);
+
     if (posArray[2] + 1 < COL) {
-        //console.log("here ", group["children"]);
-        /*console.log("S");
-       //console.log(group.children.length);
-       //console.log(children.length);*/
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1], posArray[0] + 1, posArray[3], posArray[2] + 1, children, 0, 1);
         Room[Room.length] = room;
@@ -4083,10 +3664,9 @@ function moveDown(group, fill, children) {
 
 function moveNE(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] + 1);
-    //console.log(posArray[1] + 1 < ROW);
+
     if (posArray[3] + 1 < ROW && posArray[0] - 1 > 0) {
-        //console.log(posArray);
+
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1] + 1, posArray[0] - 1, posArray[3] + 1, posArray[2] - 1, children, 1, -1);
         Room[Room.length] = room;
@@ -4099,11 +3679,7 @@ function moveNE(group, fill, children) {
 
 function moveNO(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] - 1);
-    //console.log(posArray[1] - 1 >= 1);
     if (posArray[1] - 1 > 0 && posArray[0] - 1 > 0) {
-        //console.log(posArray);
-        //console.log("here ", group["children"]["0"]["fill"]);
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1] - 1, posArray[0] - 1, posArray[3] - 1, posArray[2] - 1, children, -1, -1);
         Room[Room.length] = room;
@@ -4116,16 +3692,10 @@ function moveNO(group, fill, children) {
 
 function moveSE(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log("SE");
-    //console.log(group.children.length);
-    //console.log(children.length);
     if (posArray[0] - 1 > 0 && posArray[3] + 1 < ROW) {
-        //console.log("----------------");
-        //console.log(group.id);
 
         let room = CreateBlockFiltered(posArray[1] + 1, posArray[0] + 1, posArray[3] + 1, posArray[2] + 1, children, 1, 1);
         Room[Room.length] = room;
-        //console.log("New ",room.children.length);
         removeRoom(group);
         room.fill = fill;
         room.stroke = fill;
@@ -4136,8 +3706,6 @@ function moveSE(group, fill, children) {
 
 function moveSO(group, fill, children) {
     let posArray = fromRoomIdToArrayBound(group.id);
-    //console.log(posArray[1] - 1);
-    //console.log(posArray[1] - 1 >= 1);
     if (posArray[2] + 1 < COL && posArray[1] - 1 > 0) {
         removeRoom(group);
         let room = CreateBlockFiltered(posArray[1] - 1, posArray[0] + 1, posArray[3] - 1, posArray[2] + 1, children, -1, 1);
@@ -4155,7 +3723,6 @@ function removeSinglePieceOfRoom(room, target) {
     let children = room.children;
 
     for (let i = 0; i < children.length; i++) {
-        //console.log(children[i].id);
         if (children[i].id === target.id) {
             let posX = fromIDtoPosX(children[i].id);
             let posY = fromIDtoPosY(children[i].id);
@@ -4171,7 +3738,6 @@ function removeRoom(target) {
 
         if (target["id"] == Room[i].id) {
             notFound = false;
-            //console.log(Room[i]);
             Room[i].fill = WHYTE;
             Room[i].stroke = BLACK;
             two.clear();
@@ -4184,10 +3750,8 @@ function removeRoom(target) {
 function ClearHouseToRoom() {
     for (var j = 0; j < Room.length; j++) {
         if (id == Room[j].id) {
-            //console.log(Room[i]);
             var house = Room[j].children;
             var idRooms = [];
-            //console.log(Room[j].id);
             for (var i = 0; i < house.length; i++) {
                 var id = house[i].id;
                 clearBlock(fromIDtoPosX(id), fromIDtoPosY(id));
