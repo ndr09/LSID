@@ -181,31 +181,31 @@ const options = "<ul>\n" +
     "                    </a>\n" +
     "                </div>\n" +
     "<div class=\"list-group\" id=\"itemOptions\">\n" +
-    "    <a id=\"numberST\" class=\"list-group-item\">Number of square tables\"\n" +
+    "    <a id=\"numberST\" class=\"list-group-item\">Number of square tables\n" +
     "        <div id=\"sliderSTN\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberD\" class=\"list-group-item\">Number of desks\"\n" +
+    "    <a id=\"numberD\" class=\"list-group-item\">Number of desks\n" +
     "        <div id=\"sliderDN\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberArmchair\" class=\"list-group-item\">Number of armchairs\"\n" +
+    "    <a id=\"numberArmchair\" class=\"list-group-item\">Number of armchairs\n" +
     "        <div id=\"sliderARM\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberBed\" class=\"list-group-item\">Number of beds\"\n" +
+    "    <a id=\"numberBed\" class=\"list-group-item\">Number of beds\n" +
     "        <div id=\"sliderBED\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberWar\" class=\"list-group-item\">Number of wardrobes\"\n" +
+    "    <a id=\"numberWar\" class=\"list-group-item\">Number of wardrobes\n" +
     "        <div id=\"sliderWAR\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberBidet\" class=\"list-group-item\">Number of bidets\"\n" +
+    "    <a id=\"numberBidet\" class=\"list-group-item\">Number of bidets\n" +
     "        <div id=\"sliderBDT\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberWC\" class=\"list-group-item\">Number of wc\"\n" +
+    "    <a id=\"numberWC\" class=\"list-group-item\">Number of wc\n" +
     "        <div id=\"sliderWC\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberSink\" class=\"list-group-item\">Number of sinks\"\n" +
+    "    <a id=\"numberSink\" class=\"list-group-item\">Number of sinks\n" +
     "        <div id=\"sliderSNK\"></div>\n" +
     "    </a>\n" +
-    "    <a id=\"numberBath\" class=\"list-group-item\">Number of baths\"\n" +
+    "    <a id=\"numberBath\" class=\"list-group-item\">Number of baths\n" +
     "        <div id=\"sliderBTH\"></div>\n" +
     "    </a>\n" +
     "</div>";
@@ -2147,7 +2147,6 @@ function RemoveAll() {
 }
 
 function draw(data) {
-    console.log(data);
     for (let i = 0; i < data["Long"].length; i++) {
 
         let t = data["Long"][i];
@@ -2177,10 +2176,13 @@ function draw(data) {
 
     }
     for (let i = 0; i < data["Short"].length; i++) {
+
         let t = data["Short"][i];
+        console.log(t);
         let posX = fromIDtoPosX(t["id"]);
         let posY = fromIDtoPosY(t["id"]);
         let rect = ShortTable(posX, posY, 1);
+
         Short[Short.length] = rect;
         two.update();
         ShortTableProprieties(rect);
@@ -2334,6 +2336,195 @@ function draw(data) {
     }
 
 
+}
+
+function drawResponse(data){
+    for (let i = 0; i < data["Long"].length; i++) {
+
+        let t = data["Long"][i];
+
+        let posX = fromIDtoPosX(t);
+
+        let posY = fromIDtoPosY(t);
+        let direction = orientationFromID(t);
+        switch (direction) {
+            case 0:
+                posX -= 0.5;
+                break;
+            case 1:
+                posY -= 0.5;
+                break;
+            case 2:
+                posX += 0.5;
+                break;
+            case 3:
+                posY += 0.5;
+                break;
+        }
+        let rect = LongTable(posX, posY, direction);
+        Long[Long.length] = rect;
+        two.update();
+        LongTableProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Short"].length; i++) {
+
+        let t = data["Short"][i];
+        let posX = fromIDtoPosX(t);
+        let posY = fromIDtoPosY(t);
+        let rect = ShortTable(posX, posY, 1);
+
+        Short[Short.length] = rect;
+        two.update();
+        ShortTableProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Armchair"].length; i++) {
+        let t = data["Armchair"][i];
+        let posX = fromIDtoPosX(t);
+        let posY = fromIDtoPosY(t);
+        let ori = orientationFromID(t);
+        let rect = ShortTable(posX, posY, 2);
+        if (ori !== 0) {
+            rect.fill = armchairTexture[ori];
+            rect.id = "ArmchairY" + posY + "X" + posX + "D" + ori;
+        }
+        Armchair[Armchair.length] = rect;
+
+        two.update();
+        ArmchairProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Bidet"].length; i++) {
+        let t = data["Bidet"][i];
+        let posX = fromIDtoPosX(t);
+        let posY = fromIDtoPosY(t);
+        let ori = orientationFromID(t);
+        let rect = ShortTable(posX, posY, 3);
+        if (ori !== 0) {
+            rect.fill = bidetTexture[ori];
+            rect.id = "BidetY" + posY + "X" + posX + "D" + ori;
+        }
+        Bidet[Bidet.length] = rect;
+
+        two.update();
+        bidetProprieties(rect);
+
+    }
+    for (let i = 0; i < data["WC"].length; i++) {
+        let t = data["WC"][i];
+        let posX = fromIDtoPosX(t);
+        let posY = fromIDtoPosY(t);
+        let ori = orientationFromID(t);
+        let rect = ShortTable(posX, posY, 4);
+        if (ori !== 0) {
+            rect.fill = bidetTexture[ori];
+            rect.id = "BidetY" + posY + "X" + posX + "D" + ori;
+        }
+        WC[WC.length] = rect;
+
+        two.update();
+        WCProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Sink"].length; i++) {
+        let t = data["Sink"][i];
+        let posX = fromIDtoPosX(t);
+        let posY = fromIDtoPosY(t);
+        let ori = orientationFromID(t);
+        let rect = ShortTable(posX, posY, 5);
+        if (ori !== 0) {
+            rect.fill = sinkTexture[ori];
+            rect.id = "SinkY" + posY + "X" + posX + "D" + ori;
+        }
+        Sink[Sink.length] = rect;
+
+        two.update();
+        sinkProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Bath"].length; i++) {
+        let t = data["Bath"][i];
+
+        let posX = fromIDtoPosX(t);
+
+        let posY = fromIDtoPosY(t);
+        let direction = orientationFromID(t);
+        switch (direction) {
+            case 0:
+                posX -= 0.5;
+                break;
+            case 1:
+                posY -= 0.5;
+                break;
+            case 2:
+                posX += 0.5;
+                break;
+            case 3:
+                posY += 0.5;
+                break;
+        }
+        let rect = bath(posX, posY, direction);
+        Bath[Bath.length] = rect;
+        two.update();
+        bathProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Bed"].length; i++) {
+        let t = data["Bed"][i];
+
+        let posX = fromIDtoPosX(t);
+
+        let posY = fromIDtoPosY(t);
+        let direction = orientationFromID(t);
+        switch (direction) {
+            case 0:
+                posX -= 0.5;
+                break;
+            case 1:
+                posY -= 0.5;
+                break;
+            case 2:
+                posX += 0.5;
+                break;
+            case 3:
+                posY += 0.5;
+                break;
+        }
+        let rect = bed(posX - 0.5, posY - 0.5, direction);
+        Bed[Bed.length] = rect;
+        two.update();
+        bedProprieties(rect);
+
+    }
+    for (let i = 0; i < data["Long"].length; i++) {
+
+        let t = data["Wardrobe"][i];
+
+        let posX = fromIDtoPosX(t);
+
+        let posY = fromIDtoPosY(t);
+        let direction = orientationFromID(t);
+        switch (direction) {
+            case 0:
+                posX -= 1.5;
+                break;
+            case 1:
+                posY -= 1.5;
+                break;
+            case 2:
+                posX += 1.5;
+                break;
+            case 3:
+                posY += 1.5;
+                break;
+        }
+        let rect = wardrobe(posX, posY, direction);
+        Wardrobe[Wardrobe.length] = rect;
+        two.update();
+        wardrobeProprieties(rect);
+
+    }
 }
 
 function typeFromID(str) {
@@ -3962,7 +4153,7 @@ function nextStep() {
 function collectAndSend() {
 
     saveConf(conf);
-    restoreRoomConf(conf);
+    //restoreRoomConf(conf);
     let data = {};
     let idRooms = [];
     for (var i = 0; i < Room[roomNumber].children.length; i++) {
@@ -4028,7 +4219,6 @@ function collectAndSend() {
     data.Wardrobe = wardrobeID.slice();
     data.children = idRooms.slice();
 
-
     fetch(API, {
 
         method: 'POST',
@@ -4044,6 +4234,7 @@ function collectAndSend() {
         return response.json();
     })
         .then(function (response) {
+            console.log(response);
             let roomNumber = response.roomNumber;
             var room = {
                 "Long": response["Long"],
@@ -4056,7 +4247,8 @@ function collectAndSend() {
                 "Bed": response["Bed"],
                 "Wardrobe": response["Wardrobe"]
             };
-            draw(room);
+            RemoveAllInRoom();
+            drawResponse(room);
         });
 
 
