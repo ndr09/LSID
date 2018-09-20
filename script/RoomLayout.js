@@ -4262,9 +4262,9 @@ function collectAndSendFloor() {
         }
     }
     data.Rooms = Room.slice();
-    data.RoomNumber = RoomOptions.RN;
+    data.RoomNumber = Object.assign({}, RoomOptions.RN);
 
-    fetch(APIfloor, {
+    /*fetch(APIfloor, {
 
         method: 'POST',
         mode: 'cors',
@@ -4279,7 +4279,7 @@ function collectAndSendFloor() {
         return response.json();
     })
         .then(function (response) {
-        });
+        });*/
 }
 
 function collectAndSendRoom() {
