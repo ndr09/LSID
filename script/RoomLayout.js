@@ -2932,10 +2932,12 @@ function MouseDown(ev) {
 function mouseMove(ev) {
     let area;
     let fill;
-    if(ev.target.parentNode.id && ev.target.parentNode.id === "two_0") {
+    if(ev.target.parentNode.id && ev.target.parentNode.id === "two_0" || ev.target.parentNode.id.indexOf("room") !== -1) {
+
         if ((RoomStatus === 1 || RoomStatus === 6 || RoomStatus === 7 || RoomStatus === 8) && PhaseStatus === 0 && mouseDownFlag && frm !== "Room") {
             let X = mouseX(ev);
             let Y = mouseY(ev);
+
             let valid = ((Math.abs(lastX - X) > 25) || (Math.abs(lastY - Y) > 25)) && (ev.target.id && ev.target.id !== "test");
 
             if (valid) {
