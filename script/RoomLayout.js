@@ -1337,7 +1337,7 @@ function menu(elem) {
 
 
 function rotate() {
-    let type = typeFromID(RightID);
+    let type = typeFromID(RightID)+"";
     if (type === "Long") {
         var dir = RightID[RightID.length - 1] * 1;
         var rect;
@@ -1533,7 +1533,7 @@ function rotate() {
         Bed[pos] = rect;
         two.update();
         bedProprieties(rect);
-    } else if ("Wardrobe") {
+    } else if (type === "Wardrobe") {
         var dir = RightID[RightID.length - 1] * 1;
         var rect;
         var pos;
@@ -1709,7 +1709,7 @@ function removeTableOnclick(ev) {
         Bed.splice(pos, 1);
     } else if (type === "Wardrobe") {
         var pos;
-        for (var i = 0; i < Long.length; i++) {
+        for (var i = 0; i < Wardrobe.length; i++) {
             if (Wardrobe[i].id == RightID) {
                 var X = fromIDtoPosX(Wardrobe[i].id);
                 var Y = fromIDtoPosY(Wardrobe[i].id);
@@ -1729,7 +1729,6 @@ function removeTableOnclick(ev) {
                         break;
                     default:
                 }
-
                 clearLine(X, Y, dir);
                 pos = i;
             }
@@ -2555,7 +2554,7 @@ function drawResponse(data) {
 function typeFromID(str) {
     var flag = false;
     var type = "";
-    for (var index = 0; index < str.length; index++) {
+    /*for (var index = 0; index < str.length; index++) {
         if (str[index] == "Y" || str[index] == "K" || str[index] == "L" || str[index] == "N" || str[index] == "B") {
             flag = true;
 
@@ -2563,6 +2562,15 @@ function typeFromID(str) {
         if (!flag) {
             type += str[index];
         }
+    }*/
+    if(str.indexOf('room') !== -1){
+        type = str[4];
+    }else{
+        let index = str.indexOf('Y');
+        if(index !==  0){
+            type = str.slice(0,index);
+        }
+
     }
     return type;
 }
@@ -3878,7 +3886,7 @@ function moveRight(group, fill, children) {
 
     if (posArray[3] + 1 < ROW) {
         removeRoom(group);
-        let room = CreateBlockFiltered(posArray[1] + 1, posArray[0], posArray[3] + 1, posArray[2], children, 1, 0);
+        let room = CreateBlockFiltered(posArray[1] + 1, posArray[0], posArray[3] + 1, posArray[2],group.id[4], children, 1, 0);
         Room[Room.length] = room;
         room.fill = fill;
         room.stroke = fill;
@@ -3895,7 +3903,7 @@ function moveLeft(group, fill, children) {
 
     if (posArray[1] - 1 > 0) {
         removeRoom(group);
-        let room = CreateBlockFiltered(posArray[1] - 1, posArray[0], posArray[3] - 1, posArray[2], children, -1, 0);
+        let room = CreateBlockFiltered(posArray[1] - 1, posArray[0], posArray[3] - 1, posArray[2],group.id[4],  children, -1, 0);
         Room[Room.length] = room;
         room.fill = fill;
         room.stroke = fill;
