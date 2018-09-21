@@ -1932,7 +1932,7 @@ function clearSquare(X, Y) {
 }
 
 function clearLine(X, Y, dir) {
-    blockStatus[Y][X] = true;
+    blockStatus[Y][X] = false;
     switch (dir) {
         case 0:
             blockStatus[Y][X + 1] = false;

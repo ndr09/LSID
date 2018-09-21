@@ -32,13 +32,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="382" />
-          <entry key="js" value="10423" />
+          <entry key="js" value="10428" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="382" />
-          <entry key="JavaScript" value="10423" />
+          <entry key="JavaScript" value="10428" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -881,13 +881,13 @@
                 <element signature="e#144174#144225#0" />
                 <element signature="e#144265#144357#0" />
                 <element signature="e#144363#144502#0" />
-                <marker date="1537536767850" expanded="false" signature="1576:10204" ph="..." />
-                <marker date="1537536767850" expanded="false" signature="10221:13569" ph="..." />
-                <marker date="1537536767850" expanded="false" signature="10366:12200" ph="..." />
-                <marker date="1537536767850" expanded="false" signature="13592:13846" ph="..." />
-                <marker date="1537536767850" expanded="false" signature="13864:14514" ph="..." />
-                <marker date="1537536767850" expanded="true" signature="14539:14898" ph="..." />
-                <marker date="1537536767850" expanded="false" signature="14918:15583" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="1576:10204" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="10221:13569" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="10366:12200" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="13592:13846" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="13864:14514" ph="..." />
+                <marker date="1537536935298" expanded="true" signature="14539:14898" ph="..." />
+                <marker date="1537536935298" expanded="false" signature="14918:15583" ph="..." />
               </folding>
             </state>
           </provider>
@@ -980,11 +980,11 @@
       <path value="$PROJECT_DIR$/jquery/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="329" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1929" />
     <option name="y" value="-9" />
-    <option name="width" value="1936" />
-    <option name="height" value="880" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -1101,22 +1101,22 @@
       <workItem from="1537340584507" duration="5754000" />
       <workItem from="1537430290222" duration="797000" />
       <workItem from="1537456740942" duration="3705000" />
-      <workItem from="1537518201699" duration="4981000" />
+      <workItem from="1537518201699" duration="5146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309465000" />
+    <option name="totallyTimeSpent" value="309630000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1927" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.062128223" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49804688" visible="true" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49804688" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -1997,13 +1997,13 @@
             <element signature="e#144174#144225#0" />
             <element signature="e#144265#144357#0" />
             <element signature="e#144363#144502#0" />
-            <marker date="1537536767850" expanded="false" signature="1576:10204" ph="..." />
-            <marker date="1537536767850" expanded="false" signature="10221:13569" ph="..." />
-            <marker date="1537536767850" expanded="false" signature="10366:12200" ph="..." />
-            <marker date="1537536767850" expanded="false" signature="13592:13846" ph="..." />
-            <marker date="1537536767850" expanded="false" signature="13864:14514" ph="..." />
-            <marker date="1537536767850" expanded="true" signature="14539:14898" ph="..." />
-            <marker date="1537536767850" expanded="false" signature="14918:15583" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="1576:10204" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="10221:13569" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="10366:12200" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="13592:13846" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="13864:14514" ph="..." />
+            <marker date="1537536935298" expanded="true" signature="14539:14898" ph="..." />
+            <marker date="1537536935298" expanded="false" signature="14918:15583" ph="..." />
           </folding>
         </state>
       </provider>
