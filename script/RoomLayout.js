@@ -695,6 +695,7 @@ function ShortTable(posX, posY, filler) {
 }
 
 function ShortTableProprieties(re) {
+    menu(re);
     $(re._renderer.elem)
         .click(function (e) {
             if (RoomStatus == 1 && PhaseStatus == 1) {
@@ -1735,6 +1736,18 @@ function removeTableOnclick(ev) {
         }
         target.remove();
         Wardrobe.splice(pos, 1);
+    }else if(type === "Short"){
+        for (var i = 0; i < Short.length; i++) {
+            if (Short[i].id == RightID) {
+                var X = fromIDtoPosX(Short[i].id);
+                var Y = fromIDtoPosY(Short[i].id);
+
+                clearBlock(X, Y);
+                pos = i;
+            }
+        }
+        target.remove();
+        Short.splice(pos, 1);
     }
 
 }
@@ -2159,7 +2172,7 @@ function RemoveAll() {
 
             }
         }
-        if (Wardrobe.length && Bed.length > 0) {
+        if (Wardrobe.length && Wardrobe.length > 0) {
             for (var i = Wardrobe.length - 1; i >= 0; i--) {
                 removeWardrobe(document.getElementById(Wardrobe[i].id));
 
